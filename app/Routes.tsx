@@ -5,12 +5,14 @@ import App from './containers/App';
 import HomePage from './containers/HomePage';
 import CounterPage from './containers/CounterPage';
 
+import Test from './components/Test'
+
 export default function Routes() {
   return (
     <App>
       <Switch>
         <Route path={routes.COUNTER} component={CounterPage} />
-        <Route path={routes.HOME} component={HomePage} />
+        <Route path={routes.HOME} component={Test} />
       </Switch>
     </App>
   );

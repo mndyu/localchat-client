@@ -5,7 +5,11 @@ import { hot } from 'react-hot-loader/root';
 import { History } from 'history';
 import { Store } from '../reducers/types';
 import Routes from '../Routes';
+
+// layout
 import Header from '../components/Header';
+import Side from './SidePannel'
+import styles from './Root.css'
 
 type Props = {
   store: Store;
@@ -15,9 +19,12 @@ type Props = {
 const Root = ({ store, history }: Props) => (
   <Provider store={store}>
     <Header />
-    <ConnectedRouter history={history}>
-      <Routes />
-    </ConnectedRouter>
+    <div className={styles.container}>
+      <Side />
+      <ConnectedRouter history={history}>
+        <Routes />
+      </ConnectedRouter>
+    </div>
   </Provider>
 );
 

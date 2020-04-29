@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import styled from './Header.css'
+import styles from './SidePannel.css'
 
 function App() {
     return (
-      <div className={styled.container} data-tid="container">
-        my header
+      <div className={styles.container} data-tid="container">
+        my side
       </div>
     );
   }
