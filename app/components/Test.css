@@ -1,0 +1,6 @@
+.container {
+  position: absolute;
+  width: 87vw;
+  background-color: greenyellow;
+  overflow-y: auto;
+}

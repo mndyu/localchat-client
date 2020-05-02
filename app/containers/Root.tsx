@@ -16,6 +16,7 @@ type Props = {
   history: History;
 };
 
+
 const Root = ({ store, history }: Props) => (
   <Provider store={store}>
     <Header />

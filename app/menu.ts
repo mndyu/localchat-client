@@ -17,6 +17,9 @@ export default class MenuBuilder {
 
   constructor(mainWindow: BrowserWindow) {
     this.mainWindow = mainWindow;
+    
+    this.mainWindow.setSize(1200,768)
+    this.mainWindow.setMinimumSize(1000,500)
   }
 
   buildMenu() {
