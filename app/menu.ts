@@ -20,6 +20,7 @@ export default class MenuBuilder {
     
     this.mainWindow.setSize(1200,768)
     this.mainWindow.setMinimumSize(1000,500)
+    this.mainWindow.setMaximumSize(1200,768)
   }
 
   buildMenu() {

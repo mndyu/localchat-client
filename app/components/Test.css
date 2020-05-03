@@ -1,6 +1,25 @@
 .container {
   position: absolute;
-  width: 87vw;
-  background-color: greenyellow;
+  width: 95vw;
+  height: 100%;
+}
+
+.container > div {
+  height: inherit;
+  display: inline-grid;
   overflow-y: auto;
+}
+
+.userList {
+  background-color: rgb(201, 201, 201);
+  width: 13vw;
+}
+
+.contentContainer {
+  width: 82vw;
+  background-color: bisque;
+}
+
+.wrapper {
+  display: block;
 }

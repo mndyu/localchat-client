@@ -1,7 +1,26 @@
 .container {
-  background-color: blue;
-  min-width: 10vw;
-  width: 13vw;
-  height: 100vh;
+  min-width: 60px;
+  width: 5vw;
+  height: 99vh;
   text-align: center;
+}
+
+.container:hover {
+  overflow-y: scroll;
+  width: 6vw;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+/* スクロールバーの動く部分 */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 50, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3);
 }
