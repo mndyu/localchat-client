@@ -16,10 +16,10 @@ type Props = {
   history: History;
 };
 
-
 const Root = ({ store, history }: Props) => (
+  
   <Provider store={store}>
-    <Header />
+    <Header history={history} />
     <div className={styles.container}>
       <Side />
       <ConnectedRouter history={history}>

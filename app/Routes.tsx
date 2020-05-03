@@ -4,6 +4,8 @@ import routes from './constants/routes.json';
 import App from './containers/App';
 import HomePage from './containers/HomePage';
 import CounterPage from './containers/CounterPage';
+import Logs from './components/Log'
+import Setting from './components/Setting'
 
 import Test from './components/Test'
 
@@ -11,8 +13,9 @@ export default function Routes() {
   return (
     <App>
       <Switch>
-        <Route path={routes.COUNTER} component={CounterPage} />
-        <Route path={routes.HOME} component={Test} />
+        <Route exact path={routes.HOME} component={Test} />
+        <Route exact path={routes.LOGS} component={Logs} />
+        <Route exact path={routes.SETTING} component={Setting} />
       </Switch>
     </App>
   );

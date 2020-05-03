@@ -1,4 +1,9 @@
 .container {
-  background-color: red;
+  background-color: rgb(131, 255, 162);
   min-height: 15px;
+}
+
+.container div {
+  display: inline;
+  margin-left: 16px;
 }

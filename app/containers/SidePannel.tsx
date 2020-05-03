@@ -7,7 +7,6 @@ import Group from '../components/Group'
 function App() {
     return (
       <div className={styles.container} data-tid="container">
-        my side
         <Group />
         <Group />
         <Group />

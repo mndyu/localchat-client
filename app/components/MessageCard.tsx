@@ -5,7 +5,20 @@ import styles from './MessageCard.css'
 function App() {
     return (
       <div className={styles.container}>
-        my message
+        <div className={styles.header}>
+          <div>
+            user name
+          </div>
+          <div className={styles.time}>
+            current time
+          </div>          
+          <div className={styles.info}>
+            info
+          </div>
+        </div>
+        <div className={styles.body}>
+          message body
+        </div>
       </div>
     );
   }

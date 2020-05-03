@@ -1,4 +1,5 @@
 .container {
-  background-color: khaki;
   margin: 10px 5px 5px 5px;
+  list-style: none;
+  cursor: pointer;
 }

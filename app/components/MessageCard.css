@@ -2,4 +2,22 @@
   background-color: violet;
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 50px;
+}
+.header div {
+  display: inline;
+}
+
+.time {
+  padding-left: 20px;
+}
+
+.info {
+  float: right;
+}
+
+.body {
+  margin: 15px;
+  background-color: lightblue;
 }
