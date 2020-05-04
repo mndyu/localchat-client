@@ -1,6 +1,6 @@
 .container {
   margin-top: 0;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
   text-align: center;
 }
 
@@ -10,5 +10,31 @@
 }
 
 .intputGroup {
-  width: 80%;
+  margin-left: 20px;
+  display: table;
+  border-collapse: collapse;
+  width: 90%;
+}
+.intputGroup > div {
+  display: table-cell;
+  border: 1px solid #ddd;
+  vertical-align: middle; /* needed for Safari */
+}
+
+.intputGroup > div + div {
+  background-color: rgb(109, 109, 109);
+}
+
+.intputGroup > div + div:hover {
+  opacity: 0.9;
+}
+
+.intputGroup > div + div:active {
+  background-color: rgb(158, 158, 158);
+}
+
+.btn {
+  color: white;
+  padding: 5px;
+  cursor: pointer;
 }

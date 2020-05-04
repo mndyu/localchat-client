@@ -5,11 +5,13 @@ import styles from './Test.css'
 import User from './UserCard'
 import Message from './MessageCard'
 import In from './Input'
+import Search from './UserSearch'
 
 function App() {
     return (
       <div className={styles.container}>
         <div className={styles.userList}>
+          <Search />
           <User />
           <User />
           <User />
@@ -75,8 +77,7 @@ function App() {
             <Message />
             <Message />
           </div>
-
-          <div className={styles.input}>
+          <div>
             <In />
           </div>
 

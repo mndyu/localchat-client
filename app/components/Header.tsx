@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styled from './Header.css'
 import { History } from 'history';
 import PATH from '../constants/routes.json'
@@ -8,19 +7,17 @@ type Props = {
   history: History;
 };
 
-
 function App({ history }: Props) {
-  console.log(history)
 
     return (
       <div className={styled.container} data-tid="container">
-        <div onClick={e => history.push("/")}>
+        <div className={styled.btn} onClick={e => history.push(PATH.HOME)}>
           home
         </div>
-        <div onClick={e => history.push("/logs")}>
+        <div className={styled.btn} onClick={e => history.push(PATH.LOGS)}>
           logs
         </div>
-        <div onClick={e => history.push("/setting")}>
+        <div className={styled.btn} onClick={e => history.push(PATH.SETTING)}>
           setting
         </div>
       </div>

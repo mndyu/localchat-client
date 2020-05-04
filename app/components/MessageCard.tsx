@@ -19,6 +19,9 @@ function App() {
         <div className={styles.body}>
           message body
         </div>
+        <div className={styles.unopen}>
+          unreaded message
+        </div>
       </div>
     );
   }

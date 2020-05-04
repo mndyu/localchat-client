@@ -1,9 +1,13 @@
 .container {
-  background-color: rgb(131, 255, 162);
+  background-color: rgb(241, 255, 191);
   min-height: 15px;
 }
 
 .container div {
   display: inline;
   margin-left: 16px;
+}
+
+.btn {
+  cursor: pointer;
 }

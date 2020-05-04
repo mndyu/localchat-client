@@ -1,11 +1,14 @@
 .container {
-  background-color: green;
+  background-color: rgb(160, 175, 160);
   margin: 5px 5px;
   padding: 3px;
   border-radius: 25px;
+  transition: all 100ms 0s ease;
+  transition-timing-function: ease-in;
 }
 
 .container:hover {
   opacity: 0.9;
   cursor: pointer;
+  background-color: rgb(190, 209, 190);
 }
