@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react';
 import styles from './UserSearch.css'
 
 function App() {
+    const [message, setMessage] = useState("test")
+
+    const onChange = (evt: any) => {    
+        setMessage(evt.target.value)
+    }
+    
     return (
         <div className={styles.container}>
             <span>
                 user search
             </span>
-            <input list="search" type="text" maxLength={16} autoComplete="off"/>
+            <input list="search" type="text" maxLength={16} value={message} onChange={onChange} autoComplete="off"/>
             <datalist id="search">
                 <option value="test"/>
             </datalist>

@@ -1,17 +1,23 @@
 .container {
   margin-top: 0;
   margin-bottom: 40px;
-  text-align: center;
 }
 
 .selected {
-  margin-left: 30px;
+  overflow-x: auto;
+}
+
+.selected > div {
+  margin-left: 5px;
   text-align: left;
+  display: inline;
 }
 
 .intputGroup {
   display: table;
   border-collapse: collapse;
+  margin-top: 10px;
+  margin-left: 40px;
 }
 .intputGroup > div {
   display: table-cell;
@@ -35,4 +41,15 @@
   color: white;
   padding: 5px;
   cursor: pointer;
+}
+
+.text {
+}
+
+textarea {
+  resize: none;
+  font-size: 18px;
+  width: 60vw;
+  height: 15vh;
+  outline: none;
 }

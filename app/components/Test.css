@@ -10,6 +10,7 @@
   min-width: 18vw;
   overflow-y: auto;
   overflow-x: hidden;
+  text-align: center;
 }
 
 .contentContainer {

@@ -1,37 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Input.css'
-import {Editor} from 'react-draft-wysiwyg';
-import { EditorState, convertFromHTML, ContentState, convertToRaw, convertFromRaw } from 'draft-js';
-import draftToHtml from 'draftjs-to-html';
+import User from './SelectedUser'
 
 type Props = {
   setText: Function;
+  selectedUser: any;
+  resetUser: Function;
 };
 
-function App({setText}: Props ) {
-  const [editorState, setEditorState] = useState(
-    EditorState.createEmpty(),
-  );
+
+function App({setText, selectedUser, resetUser}: Props ) {
+  const [message, setMessage] = useState("test")
 
   const set = () => {
-    console.log(editorState.getCurrentContent())
-    console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())))
-
-    const sampleMarkup =
-    '<b>Bold text</b>, <i>Italic text</i><br/ ><br />' +
-    '<a href="http://www.facebook.com">Example link</a>';
-    const blocksFromHTML = convertFromHTML(sampleMarkup);
-    const state = ContentState.createFromBlockArray(
-      blocksFromHTML.contentBlocks,
-      blocksFromHTML.entityMap,
-    );
-
-    setEditorState(EditorState.createWithContent(state))
-
+    setText(message)
+    setMessage("")
   }
 
-  const onChange = (e: any) => {
-    console.log(e)
+  const onChange = (evt: any) => {    
+    setMessage(evt.target.value)
+  }
+
+  const resetSentUser = (username: String) => {
+    console.log("exit")
   }
 
   return (
@@ -39,13 +30,17 @@ function App({setText}: Props ) {
           <hr />
           <div className={styles.selected}>
               selected User:
+              {selectedUser.map((e,idx) => {
+                return <User removeUser={resetSentUser} username={e} key={idx} />
+              })}
+
           </div>
           <div className={styles.intputGroup}>
-            <div>
-              <Editor editorState={editorState} onChange={onChange} onEditorStateChange={setEditorState} />
+            <div className={styles.text}>
+              <textarea value={message} onChange={onChange}/>
             </div>
-            <div>
-              <div className={styles.btn} onClick={e => set()}>
+            <div onClick={e => set()}>
+              <div className={styles.btn} >
                 send
               </div>
             </div>
@@ -55,3 +50,4 @@ function App({setText}: Props ) {
   }
   
 export default App;
+
