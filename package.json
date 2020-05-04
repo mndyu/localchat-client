@@ -41,7 +41,6 @@
       "prettier --ignore-path .eslintignore --parser json --write"
     ],
     "*.{css,scss}": [
-      "stylelint --ignore-path .eslintignore --syntax scss --fix",
       "prettier --ignore-path .eslintignore --single-quote --write"
     ],
     "*.{html,md,yml}": [
@@ -49,7 +48,7 @@
     ]
   },
   "build": {
-    "productName": "ElectronReact",
+    "productName": "local chat",
     "appId": "org.develar.ElectronReact",
     "files": [
       "dist/",
@@ -274,6 +273,8 @@
     "connected-react-router": "^6.6.1",
     "core-js": "^3.6.4",
     "devtron": "^1.4.0",
+    "draft-js": "^0.11.5",
+    "draftjs-to-html": "^0.9.1",
     "electron-debug": "^3.0.1",
     "electron-log": "^4.0.6",
     "electron-updater": "^4.2.0",
@@ -281,6 +282,7 @@
     "quill": "^1.3.7",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-draft-wysiwyg": "^1.14.5",
     "react-hot-loader": "^4.12.19",
     "react-quill": "^1.3.5",
     "react-redux": "^7.1.3",

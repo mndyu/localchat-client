@@ -4,9 +4,9 @@ import styled from './UserCard.css'
 
 function App() {
     return (
-      <li className={styled.container}>
+      <div className={styled.container}>
         my user
-      </li>
+      </div>
     );
   }
   

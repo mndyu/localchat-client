@@ -28,6 +28,7 @@ function App() {
         <Group />
         <Group />
         <Group />
+        <div className={styles.dump}></div>
       </div>
     );
   }

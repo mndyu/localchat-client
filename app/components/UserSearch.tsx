@@ -3,7 +3,7 @@ import styles from './UserSearch.css'
 
 function App() {
     return (
-        <li className={styles.container}>
+        <div className={styles.container}>
             <span>
                 user search
             </span>
@@ -12,7 +12,7 @@ function App() {
                 <option value="test"/>
             </datalist>
             <hr/>
-        </li>
+        </div>
     );
   }
   

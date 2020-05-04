@@ -1,6 +1,6 @@
 .container {
   margin-top: 0;
-  margin-bottom: 25px;
+  margin-bottom: 40px;
   text-align: center;
 }
 
@@ -10,10 +10,8 @@
 }
 
 .intputGroup {
-  margin-left: 20px;
   display: table;
   border-collapse: collapse;
-  width: 90%;
 }
 .intputGroup > div {
   display: table-cell;

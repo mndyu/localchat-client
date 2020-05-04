@@ -1,25 +1,35 @@
 .container {
-  position: absolute;
-  width: 95.5%;
-  height: 100%;
-}
-
-.container > div {
-  height: inherit;
-  display: inline-grid;
+  display: flex;
+  height: 97.6vh;
+  margin: 0;
 }
 
 .userList {
-  width: 13vw;
+  display: block;
+  width: 18vw;
+  min-width: 18vw;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .contentContainer {
-  width: 86%;
+  width: 77vw;
 }
 
-.wrapper {
-  display: block;
-  padding-bottom: 30px;
+.textwrap {
+  max-height: 40vh;
+  background-color: #f0f0f0;
+  width: inherit;
+  position: fixed;
+  bottom: 0;
   overflow-y: auto;
+}
+
+.messagewrap {
+  overflow-y: auto;
+  height: 75vh;
+}
+
+.dump {
+  margin-bottom: 150px;
 }

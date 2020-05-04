@@ -1,33 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Input.css'
-import Quill from 'react-quill'
-import './Input.global.css'; // ES6
+import {Editor} from 'react-draft-wysiwyg';
+import { EditorState, convertFromHTML, ContentState, convertToRaw, convertFromRaw } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
 
+type Props = {
+  setText: Function;
+};
 
-const modules = {
-  toolbar: [
-    [{ 'header': [1, 2, false] }],
-    ['bold', 'italic', 'underline','strike', 'blockquote'],
-    [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-    ['link', 'image'],
-    ['clean']
-  ],
-}
+function App({setText}: Props ) {
+  const [editorState, setEditorState] = useState(
+    EditorState.createEmpty(),
+  );
 
-const formats = [
-  'header',
-  'bold', 'italic', 'underline', 'strike', 'blockquote',
-  'list', 'bullet', 'indent',
-  'link', 'image'
-]
+  const set = () => {
+    console.log(editorState.getCurrentContent())
+    console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())))
 
-function App() {
+    const sampleMarkup =
+    '<b>Bold text</b>, <i>Italic text</i><br/ ><br />' +
+    '<a href="http://www.facebook.com">Example link</a>';
+    const blocksFromHTML = convertFromHTML(sampleMarkup);
+    const state = ContentState.createFromBlockArray(
+      blocksFromHTML.contentBlocks,
+      blocksFromHTML.entityMap,
+    );
 
-  var editor : Quill;
-  
-  const setInit = (ed: Quill) => {
-    editor = ed;
-    console.log(editor)
+    setEditorState(EditorState.createWithContent(state))
+
+  }
+
+  const onChange = (e: any) => {
+    console.log(e)
   }
 
   return (
@@ -38,10 +42,10 @@ function App() {
           </div>
           <div className={styles.intputGroup}>
             <div>
-              <Quill ref={(el) => el !== null ? setInit(el) : console.log("not assign text")} modules={modules} formats={formats} />
+              <Editor editorState={editorState} onChange={onChange} onEditorStateChange={setEditorState} />
             </div>
             <div>
-              <div className={styles.btn} onClick={e => console.log(editor.props)}>
+              <div className={styles.btn} onClick={e => set()}>
                 send
               </div>
             </div>
