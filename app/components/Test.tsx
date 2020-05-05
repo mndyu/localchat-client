@@ -304,7 +304,7 @@ function App(props: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.userList}>
-        <Search />
+        <Search userList/>
         {userList.map((e,idx) => {
           return <User addUser={addSentUser} key={idx} />
         })}

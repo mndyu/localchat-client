@@ -4,30 +4,44 @@ import styles from './SidePannel.css'
 
 import Group from '../components/Group'
 
+const tempGroup = [
+  {
+    name: "test"
+  },
+  {
+    name: "test"
+  }
+]
+
 function App() {
-    return (
+  const [currnet, setCurrent] = useState(0)
+  const [enterdGroup, setGroup] = useState([])
+  
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+
+  const focus = (id: number) => {
+    setCurrent(id)
+    forceUpdate()
+  }
+
+  const getGroup = () => {
+    return tempGroup
+  }
+
+  useEffect(() => {
+    // Your code here
+    setGroup(getGroup())
+  },[enterdGroup]);
+  
+
+  return (
       <div className={styles.container} data-tid="container">
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
-        <Group />
+        {enterdGroup.map((e,idx) => {
+          return <div key={idx}>
+              <Group id={idx} focus={focus} current={currnet}/>
+            </div>
+        })}
         <div className={styles.dump}></div>
       </div>
     );

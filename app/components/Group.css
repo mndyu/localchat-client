@@ -30,3 +30,18 @@
 .cap:hover {
   background-color: rgb(255, 195, 31);
 }
+
+.container:focus {
+  background-color: rgb(179, 255, 155);
+  outline: none;
+}
+
+.fbar {
+  position: relative;
+  border: solid;
+  border-right-width: 1rem;
+  border-right-color: rgb(160, 160, 160);
+  border-radius: 15px;
+  right: 78px;
+  bottom: 10px;
+}

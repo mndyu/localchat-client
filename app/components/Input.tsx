@@ -42,7 +42,7 @@ function App({setText, selectedUser, resetUser}: Props ) {
             <div className={styles.text}>
               <textarea value={message} onChange={onChange}/>
             </div>
-            <div onClick={e => set()}>
+            <div tabIndex={0} onClick={e => set()}>
               <div className={styles.btn} >
                 send
               </div>

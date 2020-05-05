@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styles from './UserSearch.css'
 
-function App() {
+type Props = {
+    userList: any;
+};
+  
+
+function App({userList}: Props) {
+    
     const [message, setMessage] = useState("test")
 
     const onChange = (evt: any) => {    
