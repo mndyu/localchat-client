@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Test.css'
+import { History } from 'history';
+import { match } from 'react-router'
 
 import User from './UserCard'
 import Message from './MessageCard'
@@ -11,7 +13,9 @@ type Props = {
   getUser: Function;
   getMessages: Function;
   sendMessage: Function;
-  groupId: String
+  groupId: number;
+  history: History;
+  match: match;
 };
 
 const tempUser = [
@@ -236,35 +240,12 @@ const tempBody = [
   }
 ]
 
-const tempsentUser = [
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  }
-]
-
 function App(props: Props) {
-  const [sentuser, setsent] = useState(tempsentUser)
+
+  const [sentuser, setsent] = useState([])
   const [search, setSearch] = useState("")
   const [userList, setuserList] = useState(tempUser)
-  const [messages, setMessages] = useState(tempBody)
+  const [messages, setMessages] = useState([])
   const [inputext, setInputext] = useState("")
 
   // forced re rendering
@@ -291,7 +272,7 @@ function App(props: Props) {
 
     console.log(message)
 
-    if (props.groupId === "Default") {
+    if (props.groupId == 0) {
       return
     }
 
@@ -300,6 +281,24 @@ function App(props: Props) {
   const resetUser = (user: String) => {
     console.log("reset")
   }
+
+  const getMountData = (gid: string) => {
+    console.log("set data", gid)
+  }
+
+  //https://qiita.com/k-penguin-sato/items/9373d87c57da3b74a9e6
+  useEffect(() => {
+    // init page use data
+    setsent([])
+    setSearch("")
+    setInputext("")
+
+    // get group info
+    setMessages([])
+    setuserList([])
+    
+  },[props.match.params.gid]);
+
 
   return (
     <div className={styles.container}>

@@ -14,6 +14,7 @@ export default function Routes() {
     <App>
       <Switch>
         <Route exact path={routes.HOME} component={Test} />
+        <Route exact path={routes.GROUP} component={Test} />
         <Route exact path={routes.LOGS} component={Logs} />
         <Route exact path={routes.SETTING} component={Setting} />
       </Switch>

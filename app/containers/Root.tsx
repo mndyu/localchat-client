@@ -21,7 +21,7 @@ const Root = ({ store, history }: Props) => (
   <Provider store={store}>
     <Header history={history} />
     <div className={styles.container}>
-      <Side />
+      <Side history={history} />
       <ConnectedRouter history={history}>
         <Routes />
       </ConnectedRouter>

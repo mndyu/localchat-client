@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './SidePannel.css'
+import { History } from 'history';
 
 import Group from '../components/Group'
+
+type Props = {
+  history: History;
+};
 
 const tempGroup = [
   {
@@ -13,7 +18,8 @@ const tempGroup = [
   }
 ]
 
-function App() {
+function App({history}: Props) {
+
   const [currnet, setCurrent] = useState(0)
   const [enterdGroup, setGroup] = useState([])
   
@@ -21,6 +27,7 @@ function App() {
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
   const focus = (id: number) => {
+    history.push("/group/" + id)
     setCurrent(id)
     forceUpdate()
   }

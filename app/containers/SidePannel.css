@@ -5,6 +5,8 @@
   text-align: center;
   margin-bottom: 100px;
   overflow-y: auto;
+
+  border-right: solid 1px;
 }
 
 ::-webkit-scrollbar {

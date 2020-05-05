@@ -11,6 +11,8 @@
   overflow-y: auto;
   overflow-x: hidden;
   text-align: center;
+
+  border-right: solid 1px;
 }
 
 .contentContainer {
