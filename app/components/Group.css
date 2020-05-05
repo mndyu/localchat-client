@@ -12,3 +12,21 @@
   cursor: pointer;
   background-color: rgb(190, 209, 190);
 }
+
+.cap {
+  font-size: 8px;
+  position: relative;
+  color: white;
+  right: 12px;
+  bottom: 27px;
+  border-radius: 25px;
+  background-color: #e24444;
+
+  transition: all 300ms 0s ease;
+  transition-timing-function: ease-in;
+  padding: 2px;
+}
+
+.cap:hover {
+  background-color: rgb(255, 195, 31);
+}

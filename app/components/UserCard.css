@@ -5,15 +5,16 @@
 }
 
 .cap {
+  font-size: 8px;
   position: relative;
   color: white;
-  left: 2px;
-  bottom: 5px;
+  right: 2px;
+  bottom: 13px;
   border-radius: 5px;
-  background-color: rgb(255, 166, 0);
+  background-color: #e24444;
+
   transition: all 300ms 0s ease;
   transition-timing-function: ease-in;
-
   padding: 2px;
 }
 

@@ -6,6 +6,9 @@ function App() {
     return (
       <div className={styled.container}>
         my gorup
+        <span className={styled.cap}>
+          N
+        </span>
       </div>
     );
   }

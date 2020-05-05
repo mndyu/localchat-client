@@ -257,45 +257,6 @@ const tempsentUser = [
   },
   {
     name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
   }
 ]
 
@@ -306,8 +267,16 @@ function App(props: Props) {
   const [messages, setMessages] = useState(tempBody)
   const [inputext, setInputext] = useState("")
 
-  const setSentUser = (username: String) => {
-
+  // forced re rendering
+  // https://stackoverflow.com/questions/53215285/how-can-i-force-component-to-re-render-with-hooks-in-react
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+  
+  const addSentUser = (username: string) => {
+    let dump = {name: username}
+    sentuser.push(dump)
+    setsent(sentuser)
+    forceUpdate()
   }
 
   const searchUser = (username : String) => {
@@ -337,7 +306,7 @@ function App(props: Props) {
       <div className={styles.userList}>
         <Search />
         {userList.map((e,idx) => {
-          return <User key={idx} />
+          return <User addUser={addSentUser} key={idx} />
         })}
         <div className={styles.dump}></div>
       </div>

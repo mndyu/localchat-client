@@ -8,7 +8,6 @@ type Props = {
   resetUser: Function;
 };
 
-
 function App({setText, selectedUser, resetUser}: Props ) {
   const [message, setMessage] = useState("test")
 
@@ -23,13 +22,17 @@ function App({setText, selectedUser, resetUser}: Props ) {
 
   const resetSentUser = (username: String) => {
     console.log("exit")
+    resetUser(username)
   }
 
   return (
       <div className={styles.container}>
           <hr />
           <div className={styles.selected}>
-              selected User:
+            <div>
+              send user:
+              <br/>
+            </div>              
               {selectedUser.map((e,idx) => {
                 return <User removeUser={resetSentUser} username={e} key={idx} />
               })}
