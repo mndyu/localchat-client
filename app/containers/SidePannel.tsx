@@ -43,7 +43,7 @@ function App({history}: Props) {
 
   useEffect(() => {
     // Your code here
-    getGroup()
+    //getGroup()
   },[]);
 
   return (

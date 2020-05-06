@@ -304,7 +304,7 @@ function App(props: Props) {
     setInputext("")
 
     // get group info
-    getMountData("")
+    //getMountData("")
 
 
   },[props.match.params.gid]);
