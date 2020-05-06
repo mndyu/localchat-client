@@ -3,6 +3,7 @@
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
 @import '~@fortawesome/fontawesome-free/css/all.css';
+@import '~simplemde/dist/simplemde.min.css';
 
 body {
   position: relative;
@@ -13,4 +14,15 @@ body {
   overflow-x: hidden;
   margin: 0;
   color: rgb(209, 209, 209);
+}
+
+.CodeMirror,
+.CodeMirror-scroll {
+  height: 70px;
+  min-height: 70px;
+}
+
+.editor-statusbar {
+  color: white;
+  background-color: rgb(48, 54, 59);
 }

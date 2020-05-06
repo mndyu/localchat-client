@@ -6,6 +6,7 @@ type Props = {
   addUser: Function;
 };
 
+// onlive icon add
 function App({addUser}: Props) {
     return (
       <div className={styled.container} onClick={e => addUser("test1")}>

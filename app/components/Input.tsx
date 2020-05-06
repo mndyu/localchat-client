@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Input.css'
 import User from './SelectedUser'
+import  SimpleMDE from 'simplemde'
 
 type Props = {
   setText: Function;
@@ -10,6 +11,9 @@ type Props = {
 
 function App({setText, selectedUser, resetUser}: Props ) {
   const [message, setMessage] = useState("test")
+
+  let text: any = null;
+  let simple;
 
   const set = () => {
     setText(message)
@@ -25,27 +29,30 @@ function App({setText, selectedUser, resetUser}: Props ) {
     resetUser(username)
   }
 
+  useEffect(() => {
+    // Your code here
+    console.log(text)
+    simple = new SimpleMDE({element: text})
+  },[]);
+
+
   return (
       <div className={styles.container}>
           <div className={styles.selected}>
             <div>
               send user:
               <br/>
-            </div>              
+            </div>
               {selectedUser.map((e,idx) => {
                 return <User removeUser={resetSentUser} username={e} key={idx} />
               })}
-
           </div>
           <div className={styles.intputGroup}>
             <div className={styles.text}>
-              <textarea value={message} onChange={onChange}/>
+              <textarea ref={el => text = el}/>
             </div>
-            <div tabIndex={0} onClick={e => set()}>
-              <div className={styles.btn} >
-                send
-              </div>
-            </div>
+          </div>
+          <div>
           </div>
       </div>
     );

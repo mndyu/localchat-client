@@ -19,45 +19,7 @@
   display: table;
   border-collapse: collapse;
   margin-top: 10px;
-  margin-left: 40px;
-}
-
-.intputGroup textarea {
-  color: inherit;
-  background-color: rgb(48, 54, 59);
-}
-
-.intputGroup > div {
-  display: table-cell;
-  border: 1px solid #ddd;
-  vertical-align: middle; /* needed for Safari */
-}
-
-.intputGroup > div + div {
-  background-color: rgb(19, 45, 63);
-}
-
-.intputGroup > div + div:hover {
-  opacity: 0.9;
-}
-
-.intputGroup > div + div:active {
-  background-color: rgb(158, 158, 158);
-}
-
-.btn {
-  color: rgb(209, 209, 209);
-  padding: 5px;
-  cursor: pointer;
-}
-
-.text {
-}
-
-textarea {
-  resize: none;
-  font-size: 18px;
-  width: 60vw;
-  height: 15vh;
-  outline: none;
+  margin-left: 50px;
+  margin-bottom: 20px;
+  background-color: rgb(209, 209, 209);
 }
