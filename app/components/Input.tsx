@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Input.css'
 import User from './SelectedUser'
+//https://github.com/sparksuite/simplemde-markdown-editor
 import  SimpleMDE from 'simplemde'
 
 type Props = {

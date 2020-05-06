@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './UserSearch.css'
+import styles from './UserSearch.scss'
 
 type Props = {
     userList: any;
@@ -26,6 +26,14 @@ function App({userList}: Props) {
                 <option value="test"/>
             </datalist>
             <hr/>
+            <div className={styles.resultContainer}>
+                <div>
+                    test 
+                </div>
+                <div>
+                    test 
+                </div>
+            </div>
         </div>
     );
   }
