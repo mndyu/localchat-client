@@ -27,7 +27,6 @@ function App({setText, selectedUser, resetUser}: Props ) {
 
   return (
       <div className={styles.container}>
-          <hr />
           <div className={styles.selected}>
             <div>
               send user:

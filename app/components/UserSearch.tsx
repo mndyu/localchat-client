@@ -16,9 +16,11 @@ function App({userList}: Props) {
     
     return (
         <div className={styles.container}>
-            <span>
-                user search
-            </span>
+            <div>
+                <span>
+                    user search
+                </span>
+            </div>
             <input list="search" type="text" maxLength={16} value={message} onChange={onChange} autoComplete="off"/>
             <datalist id="search">
                 <option value="test"/>

@@ -1,6 +1,8 @@
 .container {
+  color: rgb(209, 209, 209);
   margin-top: 0;
-  margin-bottom: 40px;
+  padding-bottom: 40px;
+  background-color: rgb(48, 54, 59);
 }
 
 .selected {
@@ -19,6 +21,12 @@
   margin-top: 10px;
   margin-left: 40px;
 }
+
+.intputGroup textarea {
+  color: inherit;
+  background-color: rgb(48, 54, 59);
+}
+
 .intputGroup > div {
   display: table-cell;
   border: 1px solid #ddd;
@@ -26,7 +34,7 @@
 }
 
 .intputGroup > div + div {
-  background-color: rgb(109, 109, 109);
+  background-color: rgb(19, 45, 63);
 }
 
 .intputGroup > div + div:hover {
@@ -38,7 +46,7 @@
 }
 
 .btn {
-  color: white;
+  color: rgb(209, 209, 209);
   padding: 5px;
   cursor: pointer;
 }

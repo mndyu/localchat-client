@@ -1,0 +1,13 @@
+.container {
+  text-align: center;
+  font-size: 20px;
+}
+
+.title {
+  text-align: left;
+  font-size: 16px;
+}
+
+.span {
+  width: 90%;
+}

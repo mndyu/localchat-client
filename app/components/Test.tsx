@@ -9,6 +9,8 @@ import Message from './MessageCard'
 import In from './Input'
 import Search from './UserSearch'
 
+import Fetch from '../actions/Fetch'
+
 type Props = {
   getUser: Function;
   getMessages: Function;
@@ -284,6 +286,14 @@ function App(props: Props) {
 
   const getMountData = (gid: string) => {
     console.log("set data", gid)
+    setMessages([])
+
+    Fetch('/users')
+    .then(result => {
+      console.log(result)
+      setuserList(result)})
+    .catch(e => console.log(e))
+
   }
 
   //https://qiita.com/k-penguin-sato/items/9373d87c57da3b74a9e6
@@ -294,9 +304,9 @@ function App(props: Props) {
     setInputext("")
 
     // get group info
-    setMessages([])
-    setuserList([])
-    
+    getMountData("")
+
+
   },[props.match.params.gid]);
 
 

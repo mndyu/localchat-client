@@ -11,12 +11,12 @@
   overflow-y: auto;
   overflow-x: hidden;
   text-align: center;
-
-  border-right: solid 1px;
+  background-color: rgb(87, 88, 92);
 }
 
 .contentContainer {
   width: 77vw;
+  color: rgb(209, 209, 209);
 }
 
 .textwrap {
@@ -29,6 +29,8 @@
 }
 
 .messagewrap {
+  background-color: rgb(48, 54, 59);
+  color: rgb(209, 209, 209);
   overflow-y: auto;
   height: 75vh;
 }

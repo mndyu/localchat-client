@@ -1,5 +1,5 @@
 .container {
-  background-color: rgb(160, 175, 160);
+  background-color: rgb(115, 116, 115);
   margin: 5px 5px;
   padding: 3px;
   border-radius: 25px;
@@ -32,7 +32,7 @@
 }
 
 .container:focus {
-  background-color: rgb(179, 255, 155);
+  background-color: rgb(47, 46, 59);
   outline: none;
 }
 
