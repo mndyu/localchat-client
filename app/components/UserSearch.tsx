@@ -33,16 +33,9 @@ function App({userList}: Props) {
             </div>
             <input list="search" type="text" maxLength={16} value={message} onChange={onChange} autoComplete="on"/>
             <datalist id="search">
-<<<<<<< HEAD
-                <option value="test" onClick={(e) => console.log("clieck")} />
-                <option value="test" onClick={(e) => console.log("clieck")} />
-                <option value="test" onClick={(e) => console.log("clieck")} />
-                <option value="test" onClick={(e) => console.log("clieck")} />
-=======
                 {userList.map((user: any, index: any) => {
                     return <option value={user.name} key={index}/>
                 })}
->>>>>>> 39ff0e93624fdf9c985ddb7a715e9f0fbf8d07bc
             </datalist>
         </div>
         );
