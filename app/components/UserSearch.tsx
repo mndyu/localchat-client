@@ -17,7 +17,6 @@ function App({userList}: Props) {
     const searchStart = (e: any) => {
         //init user list
         console.log("search start")
-        console.log(userList)
     }
 
     const searchEnd = (e: any) => [
@@ -34,8 +33,8 @@ function App({userList}: Props) {
             </div>
             <input list="search" type="text" maxLength={16} value={message} onChange={onChange} autoComplete="off"/>
             <datalist id="search">
-                {userList.map((user: any) => {
-                    <option value={user.name}/>
+                {userList.map((user: any, index: any) => {
+                    return <option value={user.name} key={index}/>
                 })}
             </datalist>
             <div className={styles.resultContainer}>
