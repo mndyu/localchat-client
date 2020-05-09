@@ -7,7 +7,7 @@ type Props = {
   
 
 function App({userList}: Props) {
-    
+    console.log(userList)
     const [message, setMessage] = useState("test")
 
     const onChange = (evt: any) => {    

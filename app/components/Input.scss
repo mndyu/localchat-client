@@ -1,15 +1,11 @@
 .container {
   color: rgb(209, 209, 209);
   margin-top: 0;
-  padding-bottom: 40px;
   background-color: rgb(48, 54, 59);
 }
 
-.container:hover {
-  animation: selectbody 200ms ease 1 normal;
-}
-
 .selected {
+  border-top: solid 1px;
   overflow-x: auto;
 }
 
@@ -24,22 +20,19 @@
   border-collapse: collapse;
   margin-top: 10px;
   margin-left: 50px;
-  margin-bottom: 20px;
   background-color: rgb(209, 209, 209);
 }
 
 @keyframes selectbody {
-  /*animetion-nameで設定した値を書く*/
-
   0% {
     opacity: 1;
-  } /*アニメーション開始時は不透明度0%*/
+  }
 
   20% {
-    opacity: 0.96;
-  } /*アニメーション開始時は不透明度0%*/
+    opacity: 0.9;
+  }
 
   100% {
     opacity: 1;
-  } /*アニメーション終了時は不透明度100%*/
+  }
 }

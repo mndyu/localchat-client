@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './Input.css'
+import styles from './Input.scss'
 import User from './SelectedUser'
 //https://github.com/sparksuite/simplemde-markdown-editor
 import  SimpleMDE from 'simplemde'
@@ -35,14 +35,36 @@ function App({setText, selectedUser, resetUser}: Props ) {
     // Your code here
     simple = new SimpleMDE({
       element: text,
+      autosave: {
+          enabled: true,
+          uniqueId: "GroupChat",
+          delay: 1000,
+      },
       toolbar: [
+        'bold',
+        'italic',
+        'heading',
+        '|',
+        'quote',
+        'unordered-list',
+        'ordered-list',
+        '|',
+        'link',
+        '|',
+        'preview',
+        'side-by-side',
+        'fullscreen',
+        '|',
+        'guide',    
+        '|',
         {
           name: "sendText",
           action: sendText,
-          className: "fa fa-bold", // Look for a suitable icon
+          className: "fa fa-star", // Look for a suitable icon
           title: "send Text (Ctr/Cmd-Enter)",
-        }
+        },
       ],
+      status: ["autosave", "lines", "words", "cursor"], 
     })
 
     console.log(simple)
@@ -69,11 +91,8 @@ function App({setText, selectedUser, resetUser}: Props ) {
               <textarea ref={el => text = el}/>
             </div>
           </div>
-          <div>
-          </div>
       </div>
     );
   }
   
 export default App;
-

@@ -18,18 +18,26 @@ body {
 
 .CodeMirror,
 .CodeMirror-scroll {
-  max-height: 170px;
-  min-height: 70px;
+  max-height: 150px;
+  min-height: 50px;
 }
 
 .CodeMirror {
   width: 60vw;
 }
-.editor-toolbar {
-  height: 20px;
-}
 
 .editor-statusbar {
-  color: white;
+  color: rgb(209, 209, 209);
   background-color: rgb(48, 54, 59);
+}
+.editor-toolbar:before {
+  margin-bottom: 0px;
+}
+
+.editor-toolbar:after {
+  margin-top: 0px;
+}
+
+.fa {
+  font-size: 8px;
 }
