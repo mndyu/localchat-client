@@ -14,8 +14,18 @@ function App({userList}: Props) {
         setMessage(evt.target.value)
     }
     
+    const searchStart = (e: any) => {
+        //init user list
+        console.log("search start")
+    }
+
+    const searchEnd = (e: any) => [
+        // GC 
+        console.log("search end")
+    ]
+
     return (
-        <div className={styles.container}>
+        <div className={styles.container} onMouseEnter={searchStart} onMouseLeave={searchEnd}  >
             <div>
                 <span>
                     user search
@@ -25,14 +35,8 @@ function App({userList}: Props) {
             <datalist id="search">
                 <option value="test"/>
             </datalist>
-            <hr/>
             <div className={styles.resultContainer}>
-                <div>
-                    test 
-                </div>
-                <div>
-                    test 
-                </div>
+                {message}
             </div>
         </div>
     );

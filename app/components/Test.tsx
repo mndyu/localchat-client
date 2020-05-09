@@ -9,6 +9,7 @@ import Message from './MessageCard'
 import In from './Input'
 import Search from './UserSearch'
 
+import noti from '../actions/noti'
 import Fetch from '../actions/Fetch'
 
 type Props = {
@@ -268,6 +269,7 @@ function App(props: Props) {
 
   const sendMessage = (message: string) => {
     
+    noti()
     if(message === "") {
       return
     }
@@ -306,7 +308,6 @@ function App(props: Props) {
     // get group info
     //getMountData("")
 
-
   },[props.match.params.gid]);
 
 
@@ -314,9 +315,11 @@ function App(props: Props) {
     <div className={styles.container}>
       <div className={styles.userList}>
         <Search userList/>
-        {userList.map((e,idx) => {
-          return <User addUser={addSentUser} key={idx} />
-        })}
+        <div className={styles.usercontainer} >
+          {userList.map((e,idx) => {
+            return <User addUser={addSentUser} key={idx} />
+          })}
+        </div>
         <div className={styles.dump}></div>
       </div>
 

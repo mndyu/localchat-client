@@ -14,26 +14,42 @@ function App({setText, selectedUser, resetUser}: Props ) {
   const [message, setMessage] = useState("test")
 
   let text: any = null;
-  let simple;
-
-  const set = () => {
-    setText(message)
-    setMessage("")
-  }
-
-  const onChange = (evt: any) => {    
-    setMessage(evt.target.value)
-  }
+  let simple: SimpleMDE;
 
   const resetSentUser = (username: String) => {
     console.log("exit")
     resetUser(username)
   }
 
+ const sendText = (e: any) => {
+    if(simple.value() === "" ) { 
+        console.log("none text")
+        return
+    }
+
+    setText(simple.value())
+    simple.value("")
+ }
+
   useEffect(() => {
     // Your code here
-    console.log(text)
-    simple = new SimpleMDE({element: text})
+    simple = new SimpleMDE({
+      element: text,
+      toolbar: [
+        {
+          name: "sendText",
+          action: sendText,
+          className: "fa fa-bold", // Look for a suitable icon
+          title: "send Text (Ctr/Cmd-Enter)",
+        }
+      ],
+    })
+
+    console.log(simple)
+
+    simple.codemirror.addKeyMap({"Cmd-Enter": sendText})
+    simple.codemirror.addKeyMap({"Ctrl-Enter": sendText})
+
   },[]);
 
 
@@ -44,12 +60,12 @@ function App({setText, selectedUser, resetUser}: Props ) {
               send user:
               <br/>
             </div>
-              {selectedUser.map((e,idx) => {
+              {selectedUser.map((e: any,idx: number) => {
                 return <User removeUser={resetSentUser} username={e} key={idx} />
               })}
           </div>
           <div className={styles.intputGroup}>
-            <div className={styles.text}>
+            <div>
               <textarea ref={el => text = el}/>
             </div>
           </div>

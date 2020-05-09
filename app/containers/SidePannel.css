@@ -10,6 +10,10 @@
   background-color: rgb(31, 45, 58);
 }
 
+.container:hover {
+  animation: selecton 200ms ease 1 normal;
+}
+
 ::-webkit-scrollbar {
   width: 7px;
 }
@@ -27,4 +31,20 @@
 
 .dump {
   margin-bottom: 100px;
+}
+
+@keyframes selecton {
+  /*animetion-nameで設定した値を書く*/
+
+  0% {
+    opacity: 1;
+  } /*アニメーション開始時は不透明度0%*/
+
+  20% {
+    opacity: 0.95;
+  } /*アニメーション開始時は不透明度0%*/
+
+  100% {
+    opacity: 1;
+  } /*アニメーション終了時は不透明度100%*/
 }

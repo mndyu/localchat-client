@@ -14,6 +14,10 @@
   background-color: rgb(87, 88, 92);
 }
 
+.usercontainer:hover {
+  animation: selecton 200ms ease 1 normal;
+}
+
 .contentContainer {
   width: 77vw;
   color: rgb(209, 209, 209);
@@ -35,6 +39,42 @@
   height: 75vh;
 }
 
+.messagewrap:hover {
+  animation: selectbody 200ms ease 1 normal;
+}
+
 .dump {
   margin-bottom: 150px;
+}
+
+@keyframes selecton {
+  /*animetion-nameで設定した値を書く*/
+
+  0% {
+    opacity: 1;
+  } /*アニメーション開始時は不透明度0%*/
+
+  20% {
+    opacity: 0.8;
+  } /*アニメーション開始時は不透明度0%*/
+
+  100% {
+    opacity: 1;
+  } /*アニメーション終了時は不透明度100%*/
+}
+
+@keyframes selectbody {
+  /*animetion-nameで設定した値を書く*/
+
+  0% {
+    opacity: 1;
+  } /*アニメーション開始時は不透明度0%*/
+
+  20% {
+    opacity: 0.96;
+  } /*アニメーション開始時は不透明度0%*/
+
+  100% {
+    opacity: 1;
+  } /*アニメーション終了時は不透明度100%*/
 }

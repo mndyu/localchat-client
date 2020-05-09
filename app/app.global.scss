@@ -18,8 +18,15 @@ body {
 
 .CodeMirror,
 .CodeMirror-scroll {
-  height: 70px;
+  max-height: 170px;
   min-height: 70px;
+}
+
+.CodeMirror {
+  width: 60vw;
+}
+.editor-toolbar {
+  height: 20px;
 }
 
 .editor-statusbar {

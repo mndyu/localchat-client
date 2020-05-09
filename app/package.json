@@ -18,6 +18,7 @@
   "devDependencies": {
     "@types/draft-js": "^0.10.40",
     "@types/draftjs-to-html": "^0.8.0",
-    "@types/react-draft-wysiwyg": "^1.13.0"
+    "@types/react-draft-wysiwyg": "^1.13.0",
+    "@types/simplemde": "^1.11.7"
   }
 }

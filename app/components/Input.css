@@ -5,6 +5,10 @@
   background-color: rgb(48, 54, 59);
 }
 
+.container:hover {
+  animation: selectbody 200ms ease 1 normal;
+}
+
 .selected {
   overflow-x: auto;
 }
@@ -22,4 +26,20 @@
   margin-left: 50px;
   margin-bottom: 20px;
   background-color: rgb(209, 209, 209);
+}
+
+@keyframes selectbody {
+  /*animetion-nameで設定した値を書く*/
+
+  0% {
+    opacity: 1;
+  } /*アニメーション開始時は不透明度0%*/
+
+  20% {
+    opacity: 0.96;
+  } /*アニメーション開始時は不透明度0%*/
+
+  100% {
+    opacity: 1;
+  } /*アニメーション終了時は不透明度100%*/
 }
