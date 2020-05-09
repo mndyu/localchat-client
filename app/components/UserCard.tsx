@@ -15,9 +15,9 @@ function App({addUser}: Props) {
         <span>
           user name
         </span>
-        <span className={styled.cap}>
-          N
-        </span>
+        <div className={styled.cap}>
+          99
+        </div>
       </div>
     );
   }

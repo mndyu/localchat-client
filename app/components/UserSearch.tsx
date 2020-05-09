@@ -7,7 +7,7 @@ type Props = {
   
 
 function App({userList}: Props) {
-    console.log(userList)
+
     const [message, setMessage] = useState("test")
 
     const onChange = (evt: any) => {    
@@ -31,15 +31,15 @@ function App({userList}: Props) {
                     user search
                 </span>
             </div>
-            <input list="search" type="text" maxLength={16} value={message} onChange={onChange} autoComplete="off"/>
+            <input list="search" type="text" maxLength={16} value={message} onChange={onChange} autoComplete="on"/>
             <datalist id="search">
-                <option value="test"/>
+                <option value="test" onClick={(e) => console.log("clieck")} />
+                <option value="test" onClick={(e) => console.log("clieck")} />
+                <option value="test" onClick={(e) => console.log("clieck")} />
+                <option value="test" onClick={(e) => console.log("clieck")} />
             </datalist>
-            <div className={styles.resultContainer}>
-                {message}
-            </div>
         </div>
-    );
+        );
   }
   
 export default App;
