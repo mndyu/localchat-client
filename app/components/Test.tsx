@@ -23,19 +23,19 @@ type Props = {
 
 const tempUser = [
   {
-    name: "user"
+    name: "user1"
   },
   {
-    name: "user"
+    name: "user2"
   },
   {
-    name: "user"
+    name: "user3"
   },
   {
-    name: "user"
+    name: "tttt"
   },
   {
-    name: "user"
+    name: "abcd"
   },
   {
     name: "user"
@@ -255,7 +255,7 @@ function App(props: Props) {
   // https://stackoverflow.com/questions/53215285/how-can-i-force-component-to-re-render-with-hooks-in-react
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
-  
+
   const addSentUser = (username: string) => {
     let dump = {name: username}
     sentuser.push(dump)
@@ -268,7 +268,7 @@ function App(props: Props) {
   }
 
   const sendMessage = (message: string) => {
-    
+
     noti()
     if(message === "") {
       return
@@ -337,5 +337,5 @@ function App(props: Props) {
       </div>
     );
   }
-  
+
 export default App;
