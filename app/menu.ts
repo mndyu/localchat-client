@@ -21,6 +21,7 @@ export default class MenuBuilder {
     this.mainWindow.setSize(1200,768)
     this.mainWindow.setMinimumSize(1000,500)
     this.mainWindow.setMaximumSize(1200,768)
+    this.mainWindow.maximizable = false
   }
 
   buildMenu() {
@@ -131,18 +132,18 @@ export default class MenuBuilder {
         }
       ]
     };
-    const subMenuViewProd: MenuItemConstructorOptions = {
-      label: 'View',
-      submenu: [
-        {
-          label: 'Toggle Full Screen',
-          accelerator: 'Ctrl+Command+F',
-          click: () => {
-            this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
-          }
-        }
-      ]
-    };
+       const subMenuViewProd: MenuItemConstructorOptions = {
+         label: 'View',
+         submenu: [
+           {
+             label: 'Toggle Full Screen',
+             accelerator: 'Ctrl+Command+F',
+             click: () => {
+               this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
+             }
+           }
+         ]
+       };
     const subMenuWindow: DarwinMenuItemConstructorOptions = {
       label: 'Window',
       submenu: [

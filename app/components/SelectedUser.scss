@@ -1,0 +1,18 @@
+.container {
+  display: inline-block;
+  margin-right: 5px;
+  padding-left: 5px;
+  padding-right: 3px;
+
+  background-color: gray;
+  border-radius: 5px;
+}
+
+.container span {
+  font-size: 10x;
+
+  border-left: 1px solid white;
+  margin-left: 3px;
+
+  cursor: pointer;
+}

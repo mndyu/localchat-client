@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from './SelectedUser.scss'
 
 type Props = {
     username: any;
@@ -8,8 +9,13 @@ type Props = {
 function App({username, removeUser }: Props) {
 
     return (
-      <div onClick={e => removeUser(username.name)}>
-          {username.name}
+      <div className={styles.container}>
+        <div>
+            {username.name}
+          <span onClick={e => removeUser(username.name)}>
+          &times;
+          </span>
+        </div>
       </div>
     );
   }

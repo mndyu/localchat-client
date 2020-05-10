@@ -248,7 +248,7 @@ function App(props: Props) {
   const [sentuser, setsent] = useState([])
   const [search, setSearch] = useState("")
   const [userList, setuserList] = useState(tempUser)
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState(tempBody)
   const [inputext, setInputext] = useState("")
 
   // forced re rendering

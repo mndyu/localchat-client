@@ -11,10 +11,11 @@ type Props = {
 };
 
 function App({setText, selectedUser, resetUser}: Props ) {
-  const [message, setMessage] = useState("test")
+  const [message, setMessage] = useState("")
 
   let text: any = null;
   let simple: SimpleMDE;
+  let mes = "";
 
   const resetSentUser = (username: String) => {
     console.log("exit")
@@ -34,6 +35,7 @@ function App({setText, selectedUser, resetUser}: Props ) {
   useEffect(() => {
     // Your code here
     simple = new SimpleMDE({
+      autoDownloadFontAwesome: false,
       element: text,
       autosave: {
           enabled: true,
@@ -48,12 +50,9 @@ function App({setText, selectedUser, resetUser}: Props ) {
         'quote',
         'unordered-list',
         'ordered-list',
-        '|',
         'link',
         '|',
         'preview',
-        'side-by-side',
-        'fullscreen',
         '|',
         'guide',    
         '|',
@@ -67,11 +66,17 @@ function App({setText, selectedUser, resetUser}: Props ) {
       status: ["autosave", "lines", "words", "cursor"], 
     })
 
-    console.log(simple)
-
+    //console.log(simple)
     simple.codemirror.addKeyMap({"Cmd-Enter": sendText})
     simple.codemirror.addKeyMap({"Ctrl-Enter": sendText})
-
+    // set MaxLength
+    simple.codemirror.on("change",() => {
+      if (simple.value().length < 501) {        
+        mes = simple.value()
+      } else {
+        simple.value(mes)
+      }
+    })
   },[]);
 
 
@@ -82,13 +87,15 @@ function App({setText, selectedUser, resetUser}: Props ) {
               send user:
               <br/>
             </div>
+            <div className={styles.sconatiner}>
               {selectedUser.map((e: any,idx: number) => {
                 return <User removeUser={resetSentUser} username={e} key={idx} />
               })}
+            </div>
           </div>
           <div className={styles.intputGroup}>
             <div>
-              <textarea ref={el => text = el}/>
+              <textarea  ref={el => text = el}/>
             </div>
           </div>
       </div>

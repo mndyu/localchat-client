@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './MessageCard.css'
+import styles from './MessageCard.scss'
+import {markdown} from 'markdown';
 
 type Props = {
   message: any
 };
-
+// UI concept -> Post Cart | Hagaki
 function App({message}: Props) {
   const [opened, setOpen] = useState(message.flag)
 
@@ -23,6 +24,7 @@ function App({message}: Props) {
           </div>
           <div className={styles.time}>
             {message.date}
+            test time
           </div>          
           <div className={styles.info}>
             info
@@ -31,10 +33,12 @@ function App({message}: Props) {
         {opened ? 
         <div className={styles.body}>
           {message.body}
+          <div dangerouslySetInnerHTML={{__html: markdown.toHTML( "Hello *World*!" )}}/>
         </div>        
         :
-        <div className={styles.unopen} onClick={e => setOpen(true)}>
-          unreaded message
+        <div className={styles.unopen} onClick={e => openMessage()}>
+          Read Message Click Here
+
         </div>        
         }
       </div>

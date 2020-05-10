@@ -30,6 +30,10 @@ body {
   color: rgb(209, 209, 209);
   background-color: rgb(48, 54, 59);
 }
+
+.editor-toolbar {
+  height: inherit;
+}
 .editor-toolbar:before {
   margin-bottom: 0px;
 }

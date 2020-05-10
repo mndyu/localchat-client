@@ -22,7 +22,7 @@ const tempGroup = [
 
 function App({history}: Props) {
   const [currnet, setCurrent] = useState(0)
-  const [enterdGroup, setGroup] = useState([])
+  const [enterdGroup, setGroup] = useState(tempGroup)
   
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);

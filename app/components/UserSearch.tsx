@@ -33,7 +33,7 @@ function App({userList}: Props) {
             </div>
             <input list="search" type="text" maxLength={16} value={message} onChange={onChange} autoComplete="on"/>
             <datalist id="search">
-                {userList.map((user: any, index: any) => {
+                {userList.map((user: any, index: number) => {
                     return <option value={user.name} key={index}/>
                 })}
             </datalist>

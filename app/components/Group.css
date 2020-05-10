@@ -10,15 +10,15 @@
 .container:hover {
   opacity: 0.9;
   cursor: pointer;
-  background-color: rgb(190, 209, 190);
+  background-color: rgb(168, 168, 168);
 }
 
 .cap {
   font-size: 8px;
   position: relative;
   color: white;
-  right: 12px;
-  bottom: 27px;
+  right: 8px;
+  bottom: 34px;
   border-radius: 25px;
   background-color: #e24444;
 
@@ -32,7 +32,7 @@
 }
 
 .container:focus {
-  background-color: rgb(47, 46, 59);
+  background-color: rgb(87, 87, 90);
   outline: none;
 }
 
@@ -42,6 +42,6 @@
   border-right-width: 1rem;
   border-right-color: rgb(160, 160, 160);
   border-radius: 15px;
-  right: 78px;
+  right: 81px;
   bottom: 10px;
 }
