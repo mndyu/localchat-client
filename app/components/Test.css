@@ -24,7 +24,7 @@
 }
 
 .textwrap {
-  max-height: 40vh;
+  max-height: 42vh;
   background-color: rgb(48, 54, 59);
   width: inherit;
   position: fixed;

@@ -15,6 +15,17 @@
   margin-left: 10px;
 }
 
+.subheader {
+  padding: 5px;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.subheader div {
+  display: inline;
+  margin-left: 5px;
+}
+
 .header div {
   display: inline;
 }
@@ -25,7 +36,7 @@
 
 .info {
   float: right;
-
+  cursor: pointer;
   position: inherit;
   right: 50px;
 }

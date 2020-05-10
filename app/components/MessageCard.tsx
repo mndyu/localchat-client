@@ -9,11 +9,16 @@ type Props = {
 // UI concept -> Post Cart | Hagaki
 function App({message}: Props) {
   const [opened, setOpen] = useState(message.flag)
+  const [info, setInfo] = useState(false)
 
   const openMessage = () => {
     setOpen(true) 
     //send open flag true, time
     // new Date()
+  }
+
+  const getTime = () => {
+    return new Date().toLocaleString()
   }
 
     return (
@@ -23,13 +28,28 @@ function App({message}: Props) {
             {message.name}
           </div>
           <div className={styles.time}>
-            {message.date}
-            test time
+            {message.date ? message.date : getTime()}            
           </div>          
-          <div className={styles.info}>
+          <div className={styles.info}onClick={(e) => setInfo(!info)}>
             info
           </div>
         </div>
+        {
+          info ? 
+          <div className={styles.subheader}>
+            <div>
+              open flag:false
+            </div>
+            <div>
+              opentime:{getTime()}
+            </div>
+            <div>
+               sendtime:{getTime()}
+            </div>
+          </div>
+          :
+          null
+        }
         {opened ? 
         <div className={styles.body}>
           {message.body}

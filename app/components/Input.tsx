@@ -45,7 +45,6 @@ function App({setText, selectedUser, resetUser}: Props ) {
       toolbar: [
         'bold',
         'italic',
-        'heading',
         '|',
         'quote',
         'unordered-list',
