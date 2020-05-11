@@ -8,12 +8,12 @@ type Props = {
   
 function App({username, removeUser }: Props) {
 
-    return (
+  return (
       <div className={styles.container}>
         <div>
             {username.name}
-          <span onClick={e => removeUser(username.name)}>
-          &times;
+          <span className={styles.close} onClick={e => removeUser(username)}>
+            .
           </span>
         </div>
       </div>

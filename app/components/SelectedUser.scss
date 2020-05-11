@@ -11,8 +11,14 @@
 .container span {
   font-size: 10x;
 
-  border-left: 1px solid white;
-  margin-left: 3px;
-
   cursor: pointer;
+}
+
+.close {
+  width: 10px;
+  height: 10px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  border: solid 1px rgb(209, 209, 209);
 }

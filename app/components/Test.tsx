@@ -257,13 +257,32 @@ function App(props: Props) {
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
   const addSentUser = (username: string) => {
+
     let dump = {name: username}
-    sentuser.push(dump)
-    setsent(sentuser)
-    forceUpdate()
+    let flag = false;
+
+    sentuser.forEach((e: any) => {
+      if(e.name === username)  {
+        flag = true;
+        return
+      }
+    })
+
+    if (!flag) {
+      sentuser.push(dump)
+      setsent(sentuser)
+      forceUpdate()  
+    }
+
   }
 
-  const searchUser = (username : String) => {
+  const searchUser = (username : any) => {
+
+
+    //var removedItem = fruits.splice(pos, 1);
+    //sentuser.push(dump)
+    //setsent(sentuser)
+    //forceUpdate()  
 
   }
 
@@ -282,8 +301,18 @@ function App(props: Props) {
 
   }
 
-  const resetUser = (user: String) => {
-    console.log("reset")
+  const resetUser = (user: any) => {
+
+    let result = []
+
+    sentuser.forEach((e:any) => {
+      if(user.name !== e.name) {
+        result.push(e)
+      }
+    })
+
+    setsent(result)
+    forceUpdate()
   }
 
   const getMountData = (gid: string) => {
@@ -317,7 +346,7 @@ function App(props: Props) {
         <Search userList={userList} />
         <div className={styles.usercontainer} >
           {userList.map((e,idx) => {
-            return <User addUser={addSentUser} key={idx} />
+            return <User name={e.name}  addUser={addSentUser} key={idx} />
           })}
         </div>
         <div className={styles.dump}></div>
