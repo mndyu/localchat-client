@@ -27,6 +27,7 @@ function App({DropEvent} : Props) {
 
             reader.onloadend = function(){
                 setImages(d)
+                forceUpdate()
             }
             reader.readAsDataURL(dump)
         }
@@ -36,9 +37,10 @@ function App({DropEvent} : Props) {
         setPreview(DropEvent)
     },[]);
 
-    useEffect(() => {
-        forceUpdate()
-    },[images]);
+    const Upload = (e :any) =>{
+        console.log("update")
+        console.log(images)
+    }
 
     return (
         <div className={styles.container}>
@@ -50,6 +52,9 @@ function App({DropEvent} : Props) {
                 {images.map((el: any, idx: number) => {
                     return <img className={styles.imagecont} key={idx}  src={el}/>            
                 })}
+            </div>
+            <div>
+                <input type="button" value="upload" onClick={Upload} />
             </div>
         </div>
     );
