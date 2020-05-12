@@ -15,10 +15,9 @@
 }
 
 .close {
+  position: relative;
+  top: 2px;
+
   width: 10px;
   height: 10px;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  border-radius: 25px;
-  border: solid 1px rgb(209, 209, 209);
 }

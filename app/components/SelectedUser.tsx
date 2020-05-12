@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './SelectedUser.scss'
+import {AiOutlineMenu } from 'react-icons/ai'
 
 type Props = {
     username: any;
@@ -13,7 +14,7 @@ function App({username, removeUser }: Props) {
         <div>
             {username.name}
           <span className={styles.close} onClick={e => removeUser(username)}>
-            .
+            <AiOutlineMenu />
           </span>
         </div>
       </div>
