@@ -244,12 +244,13 @@ const tempBody = [
 ]
 
 function App(props: Props) {
-
   const [sentuser, setsent] = useState([])
   const [search, setSearch] = useState("")
   const [userList, setuserList] = useState(tempUser)
   const [messages, setMessages] = useState(tempBody)
   const [inputext, setInputext] = useState("")
+
+  let target: React.ElementRef<"div">;
 
   // forced re rendering
   // https://stackoverflow.com/questions/53215285/how-can-i-force-component-to-re-render-with-hooks-in-react
@@ -313,6 +314,7 @@ function App(props: Props) {
 
     setsent(result)
     forceUpdate()
+    target.focus({preventScroll:false})
   }
 
   const getMountData = (gid: string) => {
@@ -336,6 +338,7 @@ function App(props: Props) {
 
     // get group info
     //getMountData("")
+    console.log(target.current)
 
   },[props.match.params.gid]);
 
@@ -357,7 +360,7 @@ function App(props: Props) {
           {messages.map((e,idx) => {
             return <Message message={e} key={idx} />
           })}
-          <div className={styles.dump}></div>
+          <div ref={el => target = el} className={styles.dump}>t</div>
         </div>
             <div className={styles.textwrap}>
               <In selectedUser={sentuser} resetUser={resetUser} setText={sendMessage}/>
