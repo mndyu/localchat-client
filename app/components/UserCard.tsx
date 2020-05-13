@@ -4,12 +4,14 @@ import styled from './UserCard.scss'
 
 type Props = {
   addUser: Function;
+  name: string
 };
 
 // onlive icon add
-function App({addUser}: Props) {
+function App({addUser, name}: Props) {
+  
     return (
-      <div className={styled.container} onClick={e => addUser("test1")}>
+      <div className={styled.container} onClick={e => addUser(name)}>
         <div className={styled.live}>
         </div>
         <span>

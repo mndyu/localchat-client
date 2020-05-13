@@ -5,14 +5,22 @@
 }
 
 .selected {
+  display: block;
   border-top: solid 1px;
+  overflow: hidden;
+  white-space: nowrap;
   overflow-x: auto;
+
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-right: 20px;
 }
 
 .selected > div {
   margin-left: 5px;
   text-align: left;
-  display: inline;
+  position: relative;
+  display: inline-block;
 }
 
 .intputGroup {

@@ -3,6 +3,9 @@ import styles from './Input.scss'
 import User from './SelectedUser'
 //https://github.com/sparksuite/simplemde-markdown-editor
 import  SimpleMDE from 'simplemde'
+import Modal from './Modal'
+import Images from './ImageImport'
+
 
 type Props = {
   setText: Function;
@@ -12,13 +15,14 @@ type Props = {
 
 function App({setText, selectedUser, resetUser}: Props ) {
   const [message, setMessage] = useState("")
+  const [open, setOpen] = useState(false)
+  const [evt, setEvt] = useState()
 
   let text: any = null;
   let simple: SimpleMDE;
   let mes = "";
 
   const resetSentUser = (username: String) => {
-    console.log("exit")
     resetUser(username)
   }
 
@@ -33,7 +37,7 @@ function App({setText, selectedUser, resetUser}: Props ) {
  }
 
   useEffect(() => {
-    // Your code here
+
     simple = new SimpleMDE({
       autoDownloadFontAwesome: false,
       element: text,
@@ -65,7 +69,7 @@ function App({setText, selectedUser, resetUser}: Props ) {
       status: ["autosave", "lines", "words", "cursor"], 
     })
 
-    //console.log(simple)
+
     simple.codemirror.addKeyMap({"Cmd-Enter": sendText})
     simple.codemirror.addKeyMap({"Ctrl-Enter": sendText})
     // set MaxLength
@@ -78,9 +82,27 @@ function App({setText, selectedUser, resetUser}: Props ) {
     })
   },[]);
 
+  const onDrop = (e:React.DragEvent) => {
+    e.preventDefault()
+
+    setEvt(e.dataTransfer.files)
+    setOpen(true)
+  }
+
+  const closeModal = (e: any) => {
+    setOpen(false)
+  }
 
   return (
-      <div className={styles.container}>
+      <div onDrop={onDrop} className={styles.container}>
+        {
+          open ? 
+          <Modal closeModal={closeModal}>
+            <Images DropEvent={evt}/>
+          </Modal> 
+          :
+          null
+        }
           <div className={styles.selected}>
             <div>
               send user:

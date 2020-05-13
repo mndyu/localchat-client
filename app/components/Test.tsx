@@ -244,12 +244,13 @@ const tempBody = [
 ]
 
 function App(props: Props) {
-
   const [sentuser, setsent] = useState([])
   const [search, setSearch] = useState("")
   const [userList, setuserList] = useState(tempUser)
   const [messages, setMessages] = useState(tempBody)
   const [inputext, setInputext] = useState("")
+
+  let target: React.ElementRef<"div">;
 
   // forced re rendering
   // https://stackoverflow.com/questions/53215285/how-can-i-force-component-to-re-render-with-hooks-in-react
@@ -257,13 +258,32 @@ function App(props: Props) {
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
   const addSentUser = (username: string) => {
+
     let dump = {name: username}
-    sentuser.push(dump)
-    setsent(sentuser)
-    forceUpdate()
+    let flag = false;
+
+    sentuser.forEach((e: any) => {
+      if(e.name === username)  {
+        flag = true;
+        return
+      }
+    })
+
+    if (!flag) {
+      sentuser.push(dump)
+      setsent(sentuser)
+      forceUpdate()  
+    }
+
   }
 
-  const searchUser = (username : String) => {
+  const searchUser = (username : any) => {
+
+
+    //var removedItem = fruits.splice(pos, 1);
+    //sentuser.push(dump)
+    //setsent(sentuser)
+    //forceUpdate()  
 
   }
 
@@ -282,8 +302,19 @@ function App(props: Props) {
 
   }
 
-  const resetUser = (user: String) => {
-    console.log("reset")
+  const resetUser = (user: any) => {
+
+    let result = []
+
+    sentuser.forEach((e:any) => {
+      if(user.name !== e.name) {
+        result.push(e)
+      }
+    })
+
+    setsent(result)
+    forceUpdate()
+    target.focus({preventScroll:false})
   }
 
   const getMountData = (gid: string) => {
@@ -307,6 +338,7 @@ function App(props: Props) {
 
     // get group info
     //getMountData("")
+    console.log(target.current)
 
   },[props.match.params.gid]);
 
@@ -317,7 +349,7 @@ function App(props: Props) {
         <Search userList={userList} />
         <div className={styles.usercontainer} >
           {userList.map((e,idx) => {
-            return <User addUser={addSentUser} key={idx} />
+            return <User name={e.name}  addUser={addSentUser} key={idx} />
           })}
         </div>
         <div className={styles.dump}></div>
@@ -328,7 +360,7 @@ function App(props: Props) {
           {messages.map((e,idx) => {
             return <Message message={e} key={idx} />
           })}
-          <div className={styles.dump}></div>
+          <div ref={el => target = el} className={styles.dump}>t</div>
         </div>
             <div className={styles.textwrap}>
               <In selectedUser={sentuser} resetUser={resetUser} setText={sendMessage}/>

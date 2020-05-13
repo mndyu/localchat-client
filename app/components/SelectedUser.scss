@@ -11,8 +11,13 @@
 .container span {
   font-size: 10x;
 
-  border-left: 1px solid white;
-  margin-left: 3px;
-
   cursor: pointer;
+}
+
+.close {
+  position: relative;
+  top: 2px;
+
+  width: 10px;
+  height: 10px;
 }
