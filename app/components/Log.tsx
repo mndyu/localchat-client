@@ -9,8 +9,8 @@ function App() {
     const messages = [
       {
         id: 1,
-        From: 10,
-        To: 20,
+        From: 'Tom',
+        To: 'Bob',
         gid: 1000,
         text: 'test message!',
         flag: true,
@@ -19,8 +19,8 @@ function App() {
       },
       {
         id: 1,
-        From: 10,
-        To: 20,
+        From: 'Bob',
+        To: 'Jim',
         gid: 1000,
         text: 'test message!',
         flag: true,
@@ -29,8 +29,8 @@ function App() {
       },
       {
         id: 1,
-        From: 10,
-        To: 20,
+        From: 'Tom',
+        To: 'Bob',
         gid: 1000,
         text: 'test message!',
         flag: true,
@@ -39,8 +39,8 @@ function App() {
       },
       {
         id: 1,
-        From: 10,
-        To: 20,
+        From: 'Bob',
+        To: 'Gan',
         gid: 1000,
         text: 'test message!',
         flag: true,
@@ -49,122 +49,66 @@ function App() {
       }
     ]
 
-    var logs: any
-    /*= [
-      {
-        date: '2020-05-09',
-        messages: [
-          {
-            id: 1,
-            From: 10,
-            To: 20,
-            gid: 1000,
-            text: 'test message!1111',
-            flag: true,
-            send_date:'2020-05-09',
-            open:'2020-05-10'
-          },
-          {
-            id: 1,
-            From: 10,
-            To: 20,
-            gid: 1000,
-            text: 'test message!22222',
-            flag: true,
-            send_date:'2020-05-09',
-            open:'2020-05-10'
-          },
-        ]
-      },
-      {
-        date: '2020-05-10',
-        messages: [
-          {
-            id: 1,
-            From: 10,
-            To: 20,
-            gid: 1000,
-            text: 'test message!1111',
-            flag: true,
-            send_date:'2020-05-10',
-            open:'2020-05-10'
-          },
-          {
-            id: 1,
-            From: 10,
-            To: 20,
-            gid: 1000,
-            text: 'test message!22222',
-            flag: true,
-            send_date:'2020-05-10',
-            open:'2020-05-10'
-          },
-        ]
-      },
-    ];*/
-
+    var logs: any = []
     const [displayLogs, setDisplayLogs] = useState(logs)
 
-    const groupBy = <K extends PropertyKey, V>(
+    const groupBy = <K, V>(
       array: readonly V[],
       getKey: (cur: V, idx: number, src: readonly V[]) => K
-      ) =>
-      array.reduce((obj, cur, idx, src) => {
-          const key = getKey(cur, idx, src);
-          (obj[key] || (obj[key] = []))!.push(cur);
-          return obj;
-    }, {} as Partial<Record<K, V[]>>);
+    ): [K, V[]][] =>
+      Array.from(
+          array.reduce((map, cur, idx, src) => {
+              const key = getKey(cur, idx, src);
+              const list = map.get(key);
+              if (list) list.push(cur);
+              else map.set(key, [cur]);
+              return map;
+          }, new Map<K, V[]>())
+    );
+
+    useEffect(() => {
+      logs = messagesToLogs(messages)
+      setDisplayLogs(logs)
+    },[]);
 
     const messagesToLogs = (messages: any) => {
-      logs = groupBy(messages, message => message.send_date)
-
-
+      return groupBy(messages, message => message.send_date)
     }
 
-    const checkNameMatch = (messages: string, inputString: string) => {
-
+    const checkNameMatch = (message: any, inputString: string) => {
+      return inputString === '' || inputString === message.From || inputString === message.To;
     }
 
     const onChangeInputName = (evt: any) => {
-      messagesToLogs(messages)
-      setName(evt.target.value);
+      setName(evt.target.value)
+      var filterMessages: any = messages;
 
-      if(name !== '') {
-
+      if(evt.target.value !== '') {
+        filterMessages = filterMessages.filter((message: any) => checkNameMatch(message, evt.target.value))
       }
       if(date !== '') {
-        setDisplayLogs(filterDate(logs, date));
+        filterMessages = filterDate(filterMessages, date);
       }
 
-      /*var filterLogs
-      var filterMessages
-
-      logs.map((log: any, index: number) => {
-        filterMessages
-
-        if(filterMessages.length > 0) {
-          log.push({})
-        }
-      })*/
-
-      //setDisplayLogs(logs.filter(log => checkNameMatch(log)))
+      setDisplayLogs(messagesToLogs(filterMessages));
     }
 
-    const filterDate = (logs: any, inputDate: string) => {
-      return logs.filter((log: { date: string; }) => inputDate === '' || log.date === inputDate)
+    const filterDate = (messages: any, inputDate: string) => {
+      return messages.filter((message: any) => inputDate === message.send_date)
     }
 
     const onChangeInputDate = (evt: any) => {
       setDate(evt.target.value)
-      var filterLogs: any
+      var filterMessages: any = messages;
+
       if(name !== '') {
-
+        filterMessages = filterMessages.filter((message: any) => checkNameMatch(message, name))
       }
-      if(date !== '') {
-        filterLogs = filterDate(logs, evt.target.value)
+      if(evt.target.value !== '') {
+        filterMessages = filterDate(filterMessages, evt.target.value);
       }
 
-      setDisplayLogs(filterLogs)
+      setDisplayLogs(messagesToLogs(filterMessages));
     }
 
     return (
@@ -183,11 +127,11 @@ function App() {
         <div className={styles.logs}>
           {displayLogs.map((log: any, index: number) => {
             return <details key={index}>
-            <summary>{log.date}</summary>
+            <summary>{log[0]}</summary>
             {(() => {
               const items = [];
-              for (let i = 0; i < log.messages.length; i++) {
-                items.push(<Message message={log.messages[i]} key={i} />)
+              for (let i = 0; i < log[1].length; i++) {
+                items.push(<div key={i}>{log[1][i].send_date + '  ' + log[1][i].From + '->' + log[1][i].To}</div>)
               }
               return items;
             })()}
