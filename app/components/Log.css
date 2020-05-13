@@ -7,7 +7,7 @@
 
 .userList {
   display: block;
-  width: 18vw;
+  width: 30vw;
   min-width: 18vw;
   overflow-y: auto;
   overflow-x: hidden;

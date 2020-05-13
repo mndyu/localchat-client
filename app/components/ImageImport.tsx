@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ImageImport.scss'
-  
+import Compressor from 'compressorjs';
+
+
 type Props = {
     DropEvent: FileList;
 };
-
+// image upload compressor -> Save 50% over Size
+//https://fengyuanchen.github.io/compressorjs/
 function App({DropEvent} : Props) {
     const [images, setImages] = useState([])
 
@@ -40,6 +43,17 @@ function App({DropEvent} : Props) {
     const Upload = (e :any) =>{
         console.log("update")
         console.log(images)
+
+        new Compressor(images, {
+            quality: 0.6,
+
+            success(result: any) {
+                console.log(result)
+            },
+            error(error: any) {
+                console.log(error)
+            }
+        })
     }
 
     return (
@@ -49,9 +63,13 @@ function App({DropEvent} : Props) {
             </div>
             <div>
                 image body;
-                {images.map((el: any, idx: number) => {
-                    return <img className={styles.imagecont} key={idx}  src={el}/>            
-                })}
+                <ul className={styles.previewContainer} >
+                    {images.map((el: any, idx: number) => {
+                        return <li key={idx}>
+                            <img className={styles.imagecont}  src={el}/>            
+                        </li>
+                    })}
+                </ul>
             </div>
             <div>
                 <input type="button" value="upload" onClick={Upload} />

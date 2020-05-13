@@ -271,6 +271,7 @@
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@hot-loader/react-dom": "^16.13.0",
     "ckeditor4-react": "^1.1.0",
+    "compressorjs": "^1.0.6",
     "connected-react-router": "^6.6.1",
     "core-js": "^3.6.4",
     "devtron": "^1.4.0",
