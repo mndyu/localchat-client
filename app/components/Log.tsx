@@ -1,101 +1,78 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Log.css'
+import Message from './MessageCard'
 
 function App() {
   const [name, setName] = useState('')
-  const [month, setMonth] = useState('')
-  const [day, setDay] = useState('')
+  const [date, setDate] = useState('')
 
-    const messages: any = [
+    const messages = [
       {
-        Message: {
-          properties: {
-            id: 1,
-            From: 10,
-            To: 20,
-            gid: 1000,
-            text: 'test message!',
-            flag: true,
-            send_date:'2020-05-09',
-            open:'2020-05-10'
-          }
-        }
+        id: 1,
+        From: 10,
+        To: 20,
+        gid: 1000,
+        text: 'test message!',
+        flag: true,
+        send_date:'2020-05-09',
+        open:'2020-05-10'
       },
       {
-        Message: {
-          properties: {
-            id: 1,
-            From: 10,
-            To: 20,
-            gid: 1000,
-            text: 'test message!',
-            flag: true,
-            send_date:'2020-05-09',
-            open:'2020-05-10'
-          }
-        }
+        id: 1,
+        From: 10,
+        To: 20,
+        gid: 1000,
+        text: 'test message!',
+        flag: true,
+        send_date:'2020-05-09',
+        open:'2020-05-10'
       },
       {
-        Message: {
-          properties: {
-            id: 1,
-            From: 10,
-            To: 20,
-            gid: 1000,
-            text: 'test message!',
-            flag: true,
-            send_date:'2020-05-09',
-            open:'2020-05-10'
-          }
-        }
+        id: 1,
+        From: 10,
+        To: 20,
+        gid: 1000,
+        text: 'test message!',
+        flag: true,
+        send_date:'2020-05-10',
+        open:'2020-05-10'
       },
       {
-        Message: {
-          properties: {
-            id: 1,
-            From: 10,
-            To: 20,
-            gid: 1000,
-            text: 'test message!',
-            flag: true,
-            send_date:'2020-05-09',
-            open:'2020-05-10'
-          }
-        }
+        id: 1,
+        From: 10,
+        To: 20,
+        gid: 1000,
+        text: 'test message!',
+        flag: true,
+        send_date:'2020-05-10',
+        open:'2020-05-10'
       }
     ]
 
-    var logs: any = [
+    var logs: any
+    /*= [
       {
         date: '2020-05-09',
         messages: [
           {
-            Message: {
-              properties: {
-                id: 1,
-                From: 10,
-                To: 20,
-                gid: 1000,
-                text: 'test message!1111',
-                flag: true,
-                send_date:'2020-05-09',
-                open:'2020-05-10'
-              }
-            }
+            id: 1,
+            From: 10,
+            To: 20,
+            gid: 1000,
+            text: 'test message!1111',
+            flag: true,
+            send_date:'2020-05-09',
+            open:'2020-05-10'
           },
           {
-            Message: {
-              properties: {
-                id: 1,
-                From: 10,
-                To: 20,
-                gid: 1000,
-                text: 'test message!22222',
-                flag: true,
-                send_date:'2020-05-09',
-                open:'2020-05-10'
-              }
-            }
+            id: 1,
+            From: 10,
+            To: 20,
+            gid: 1000,
+            text: 'test message!22222',
+            flag: true,
+            send_date:'2020-05-09',
+            open:'2020-05-10'
           },
         ]
       },
@@ -103,45 +80,61 @@ function App() {
         date: '2020-05-10',
         messages: [
           {
-            Message: {
-              properties: {
-                id: 1,
-                From: 10,
-                To: 20,
-                gid: 1000,
-                text: 'test message!1111',
-                flag: true,
-                send_date:'2020-05-10',
-                open:'2020-05-10'
-              }
-            }
+            id: 1,
+            From: 10,
+            To: 20,
+            gid: 1000,
+            text: 'test message!1111',
+            flag: true,
+            send_date:'2020-05-10',
+            open:'2020-05-10'
           },
           {
-            Message: {
-              properties: {
-                id: 1,
-                From: 10,
-                To: 20,
-                gid: 1000,
-                text: 'test message!22222',
-                flag: true,
-                send_date:'2020-05-10',
-                open:'2020-05-10'
-              }
-            }
+            id: 1,
+            From: 10,
+            To: 20,
+            gid: 1000,
+            text: 'test message!22222',
+            flag: true,
+            send_date:'2020-05-10',
+            open:'2020-05-10'
           },
         ]
       },
-    ];
+    ];*/
 
     const [displayLogs, setDisplayLogs] = useState(logs)
+
+    const groupBy = <K extends PropertyKey, V>(
+      array: readonly V[],
+      getKey: (cur: V, idx: number, src: readonly V[]) => K
+      ) =>
+      array.reduce((obj, cur, idx, src) => {
+          const key = getKey(cur, idx, src);
+          (obj[key] || (obj[key] = []))!.push(cur);
+          return obj;
+    }, {} as Partial<Record<K, V[]>>);
+
+    const messagesToLogs = (messages: any) => {
+      logs = groupBy(messages, message => message.send_date)
+
+
+    }
 
     const checkNameMatch = (messages: string, inputString: string) => {
 
     }
 
     const onChangeInputName = (evt: any) => {
-      setName(evt.target.value)
+      messagesToLogs(messages)
+      setName(evt.target.value);
+
+      if(name !== '') {
+
+      }
+      if(date !== '') {
+        setDisplayLogs(filterDate(logs, date));
+      }
 
       /*var filterLogs
       var filterMessages
@@ -157,66 +150,52 @@ function App() {
       //setDisplayLogs(logs.filter(log => checkNameMatch(log)))
     }
 
-    const compareDate = (date: string, inputMonth: string, inputDay: string) => {
-      var splitDate = date.split('-');
-
-      return (inputMonth === '' || Number(splitDate[1]) === Number(inputMonth))
-      && (inputDay === '' || Number(splitDate[2]) === Number(inputDay))
+    const filterDate = (logs: any, inputDate: string) => {
+      return logs.filter((log: { date: string; }) => inputDate === '' || log.date === inputDate)
     }
 
-    const onChangeInputMonth = (evt: any) => {
-      setMonth(evt.target.value)
+    const onChangeInputDate = (evt: any) => {
+      setDate(evt.target.value)
+      var filterLogs: any
+      if(name !== '') {
 
-      setDisplayLogs(logs.filter((log: { date: string; }) => compareDate(log.date, evt.target.value, day)))
-    }
+      }
+      if(date !== '') {
+        filterLogs = filterDate(logs, evt.target.value)
+      }
 
-    const onChangeInputDay = (evt: any) => {
-      setDay(evt.target.value)
-
-      setDisplayLogs(logs.filter((log: { date: string; }) => compareDate(log.date, month, evt.target.value)))
-      console.log(displayLogs)
+      setDisplayLogs(filterLogs)
     }
 
     return (
       <div className={styles.container}>
       <div className={styles.userList}>
-        <div>
+        <div className={styles.inputForm}>
           <div>
             <label>Name:</label>
             <input id="name" value={name} onChange={onChangeInputName}/>
           </div>
-
           <div>
             <label>Date:</label>
-            <select id="month" value={month} onChange={onChangeInputMonth}>
-              <option></option>
-              { [...Array(3).keys()].map(i => ++i + 2).map((month) => <option value={month}>{month}</option>)}
-            </select>
-            <span>/</span>
-            <select id="day" value={day} onChange={onChangeInputDay}>
-              <option></option>
-              { [...Array(30).keys()].map(i => ++i).map((day) => <option value={day}>{day}</option>)}
-            </select>
+            <input type="Date" value={date} onChange={onChangeInputDate}/>
+          </div>
         </div>
+        <div className={styles.logs}>
+          {displayLogs.map((log: any, index: number) => {
+            return <details key={index}>
+            <summary>{log.date}</summary>
+            {(() => {
+              const items = [];
+              for (let i = 0; i < log.messages.length; i++) {
+                items.push(<Message message={log.messages[i]} key={i} />)
+              }
+              return items;
+            })()}
+            </details>
+          })}
         </div>
-      <div>
-        {displayLogs.map((log: any, index: number) => {
-          return <details key={index}>
-          <summary>{log.date}</summary>
-          {(() => {
-            const items = [];
-            for (let i = 0; i < log.messages.length; i++) {
-              items.push(<div key={i}>{log.messages[i].Message.properties.text}</div>)
-            }
-            return items;
-          })()}
-          </details>
-        })}
       </div>
-
       </div>
-
-    </div>
     );
   }
 

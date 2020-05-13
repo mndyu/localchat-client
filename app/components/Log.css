@@ -6,9 +6,10 @@
 }
 
 .userList {
+  margin: 10px;
   display: block;
-  width: 30vw;
-  min-width: 18vw;
+  width: 50vw;
+  /*min-width: 18vw;*/
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -29,8 +30,20 @@
   margin-bottom: 150px;
 }
 
+.inputForm {
+  margin-bottom: 10px;
+}
+
+.logs {
+}
+
 details {
   border: 1px solid #aaa;
   border-radius: 4px;
   padding: 0.5em 0.5em 0;
+  cursor: default;
+}
+
+summary {
+  outline: none;
 }
