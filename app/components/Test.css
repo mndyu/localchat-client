@@ -1,3 +1,12 @@
+/*
+fix
+*/
+@media (height > 1000px) {
+  .messagewrap {
+    height: 80vh;
+  }
+}
+
 .container {
   display: flex;
   height: 97.6vh;
@@ -11,7 +20,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   text-align: center;
-  background-color: rgb(87, 88, 92);
+  background-color: rgb(38, 41, 44);
 }
 
 .usercontainer:hover {
@@ -40,8 +49,7 @@
   background-color: rgb(48, 54, 59);
   color: rgb(209, 209, 209);
   overflow-y: auto;
-  height: 80vh;
-  max-height: 80vh;
+  height: 72vh;
 
   padding-right: 15px;
   padding-left: 15px;
@@ -53,8 +61,19 @@
   animation: selectbody 200ms ease 1 normal;
 }
 
+.goBottom {
+  text-align: center;
+  cursor: pointer;
+  background-color: rgb(110, 110, 110);
+  width: 20%;
+  border-radius: 25px;
+  position: fixed;
+  left: 25rem;
+  bottom: 12.5rem;
+}
+
 .dump {
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 }
 
 @keyframes selecton {

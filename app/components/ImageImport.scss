@@ -1,13 +1,40 @@
 .container {
   color: black;
-  width: inherit;
 }
 
 .imagecont {
-  height: 200px;
-  width: 100px;
+  height: 300px;
+  width: 300px;
 }
 
-.previewContainer li {
-  display: inline;
+.previewContainer {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.previewContainer .imagecontainer {
+  display: inline-block;
+}
+
+.imagecontainer {
+  margin: 2px;
+  transition: all 100ms 0s ease;
+  transition-timing-function: ease-in;
+  transform: scale(0.8);
+}
+
+.imagecontainer:hover {
+  transform: scale(1);
+}
+
+.close {
+  text-align: right;
+  cursor: pointer;
+}
+
+.upload {
+  margin-top: 10px;
+  text-align: right;
 }

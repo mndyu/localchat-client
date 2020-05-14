@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Test.css'
 import { History } from 'history';
@@ -247,8 +247,9 @@ function App(props: Props) {
   const [sentuser, setsent] = useState([])
   const [search, setSearch] = useState("")
   const [userList, setuserList] = useState(tempUser)
-  const [messages, setMessages] = useState(tempBody)
+  const [messages, setMessages] = useState([])
   const [inputext, setInputext] = useState("")
+  const messagesEndRef = useRef(null)
 
   let target: React.ElementRef<"div">;
 
@@ -314,18 +315,18 @@ function App(props: Props) {
 
     setsent(result)
     forceUpdate()
-    target.focus({preventScroll:false})
   }
 
   const getMountData = (gid: string) => {
     console.log("set data", gid)
-    setMessages([])
 
     Fetch('/users')
     .then(result => {
       console.log(result)
       setuserList(result)})
     .catch(e => console.log(e))
+
+    setMessages(tempBody)
 
   }
 
@@ -335,13 +336,24 @@ function App(props: Props) {
     setsent([])
     setSearch("")
     setInputext("")
-
+    setMessages(tempBody)
     // get group info
     //getMountData("")
-    console.log(target.current)
-
   },[props.match.params.gid]);
 
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+  }
+
+  useEffect(scrollToBottom, [messages]);
+
+  useEffect(() => {
+    // delay mount func
+    const timer = setTimeout(() => {
+      scrollToBottom()
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -356,12 +368,15 @@ function App(props: Props) {
       </div>
 
       <div className={styles.contentContainer}>
+      <div className={styles.goBottom} onClick={e => scrollToBottom()}> go bottom</div>
+
         <div className={styles.messagewrap}>
           {messages.map((e,idx) => {
             return <Message message={e} key={idx} />
           })}
-          <div ref={el => target = el} className={styles.dump}>t</div>
+          <div ref={messagesEndRef} className={styles.dump}></div>
         </div>
+
             <div className={styles.textwrap}>
               <In selectedUser={sentuser} resetUser={resetUser} setText={sendMessage}/>
             </div>

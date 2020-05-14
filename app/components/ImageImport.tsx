@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ImageImport.scss'
 import Compressor from 'compressorjs';
-
+import {MdClose} from 'react-icons/md'
 
 type Props = {
     DropEvent: FileList;
@@ -14,7 +14,7 @@ function App({DropEvent} : Props) {
     const [, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
 
-    let body = null;
+    let image: React.ElementRef<"div">;
 
     const setPreview = (files: FileList) => {
         console.log(files)
@@ -56,22 +56,43 @@ function App({DropEvent} : Props) {
         })
     }
 
+    const cancelImage = (e: any, idx: number) => {
+        images.splice(idx,1)
+        setImages(images)
+        forceUpdate()
+
+    }
+
+    const reverseScroll = (e: React.WheelEvent) => {
+        if (e.deltaX === 0) {
+            if (e.deltaY > 0) {
+                image.scrollBy({left: 30})
+            } else {
+                image.scrollBy({left: -30})
+            }
+        }
+    }
+
+
     return (
         <div className={styles.container}>
             <div>
-                group create form
+                Upload Images
             </div>
             <div>
-                image body;
-                <ul className={styles.previewContainer} >
+            {`image files:${images.length}`}
+            </div>
+            <div>
+                <div ref={el => image = el} className={styles.previewContainer} onWheel={reverseScroll}>
                     {images.map((el: any, idx: number) => {
-                        return <li key={idx}>
+                        return <div className={styles.imagecontainer} key={idx}>
+                            <div className={styles.close} onClick={e => cancelImage(e,idx)} ><MdClose /></div>
                             <img className={styles.imagecont}  src={el}/>            
-                        </li>
+                        </div>
                     })}
-                </ul>
+                </div>
             </div>
-            <div>
+            <div className={styles.upload}>
                 <input type="button" value="upload" onClick={Upload} />
             </div>
         </div>

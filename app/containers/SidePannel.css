@@ -1,13 +1,10 @@
 .container {
   min-width: 60px;
   width: 5vw;
-  height: 99vh;
   text-align: center;
-  margin-bottom: 100px;
   overflow-y: auto;
   overflow-x: hidden;
-
-  background-color: rgb(31, 45, 58);
+  background-color: rgb(48, 54, 59);
 }
 
 .container:hover {
@@ -16,6 +13,7 @@
 
 ::-webkit-scrollbar {
   width: 7px;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 ::-webkit-scrollbar-track {
   border-radius: 10px;
@@ -23,7 +21,7 @@
 
 /* スクロールバーの動く部分 */
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(206, 206, 206, 0.4);
+  background-color: rgba(148, 148, 148, 0.3);
   border-radius: 10px;
 }
 

@@ -1,11 +1,11 @@
 .container {
   background-color: rgb(51, 58, 78);
-  min-height: 15px;
 }
 
 .container div {
   display: inline;
   margin-left: 16px;
+  padding-bottom: 5px;
 }
 
 .btn {
