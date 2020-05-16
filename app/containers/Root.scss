@@ -1,0 +1,20 @@
+.container {
+  width: 100%;
+  height: calc(100% - 24px);
+}
+.container .d1 {
+  display: inline-block;
+}
+.container .d2 {
+  display: inline-block;
+}
+
+.d1 {
+  height: 100%;
+  width: 60px;
+}
+
+.d2 {
+  height: 100%;
+  width: calc(100% - 60px);
+}

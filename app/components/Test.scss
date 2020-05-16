@@ -1,22 +1,19 @@
-/*
-fix
-*/
-@media (height > 1000px) {
-  .messagewrap {
-    height: 80vh;
-  }
-}
-
 .container {
-  display: flex;
-  height: 97.6vh;
+  height: 100%;
   margin: 0;
 }
 
+.container .userList {
+  display: inline-block;
+}
+
+.container .contentContainer {
+  display: inline-block;
+}
+
 .userList {
-  display: block;
+  height: 100%;
   width: 18vw;
-  min-width: 18vw;
   overflow-y: auto;
   overflow-x: hidden;
   text-align: center;
@@ -28,7 +25,11 @@ fix
 }
 
 .contentContainer {
-  width: 77vw;
+  height: 100%;
+  display: block;
+  width: calc(100% - 18vw);
+
+  background-color: rgb(73, 77, 80);
   color: rgb(209, 209, 209);
 }
 
@@ -49,8 +50,8 @@ fix
   background-color: rgb(48, 54, 59);
   color: rgb(209, 209, 209);
   overflow-y: auto;
-  height: 72vh;
 
+  height: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -73,7 +74,7 @@ fix
 }
 
 .dump {
-  margin-bottom: 50px;
+  margin-bottom: 250px;
 }
 
 @keyframes selecton {

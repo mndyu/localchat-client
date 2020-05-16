@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Test.css'
+import styles from './Test.scss'
 import { History } from 'history';
 import { match } from 'react-router'
 
@@ -252,7 +252,6 @@ function App(props: Props) {
   const messagesEndRef = useRef(null)
 
   let target: React.ElementRef<"div">;
-
   // forced re rendering
   // https://stackoverflow.com/questions/53215285/how-can-i-force-component-to-re-render-with-hooks-in-react
   const [, updateState] = React.useState();
@@ -358,31 +357,45 @@ function App(props: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.userList}>
-        <Search userList={userList} />
-        <div className={styles.usercontainer} >
-          {userList.map((e,idx) => {
-            return <User name={e.name}  addUser={addSentUser} key={idx} />
-          })}
-        </div>
-        <div className={styles.dump}></div>
+      <Search userList={userList} />
+          <div className={styles.usercontainer} >
+            {userList.map((e,idx) => {
+              return <User name={e.name}  addUser={addSentUser} key={idx} />
+            })}
+          </div>
+          <div className={styles.dump}></div>
+
       </div>
 
       <div className={styles.contentContainer}>
-      <div className={styles.goBottom} onClick={e => scrollToBottom()}> go bottom</div>
+        <div className={styles.goBottom} onClick={e => scrollToBottom()}> go bottom</div>
 
-        <div className={styles.messagewrap}>
+          <div className={styles.messagewrap}>
           {messages.map((e,idx) => {
             return <Message message={e} key={idx} />
           })}
           <div ref={messagesEndRef} className={styles.dump}></div>
+          </div>
+
+
+        <div className={styles.textwrap}>
+          <In selectedUser={sentuser} resetUser={resetUser} setText={sendMessage}/>
         </div>
 
-            <div className={styles.textwrap}>
-              <In selectedUser={sentuser} resetUser={resetUser} setText={sendMessage}/>
-            </div>
-        </div>
       </div>
+    </div>
     );
   }
 
 export default App;
+/*
+
+
+      <div className={styles.messagewrap}>
+      </div>
+
+
+
+
+
+*/
