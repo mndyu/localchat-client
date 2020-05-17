@@ -12,6 +12,9 @@ import Search from './UserSearch'
 import noti from '../actions/noti'
 import Fetch from '../actions/Fetch'
 
+import Modal from './Modal'
+import WellCome from './WellCome'
+
 type Props = {
   getUser: Function;
   getMessages: Function;
@@ -369,7 +372,6 @@ function App(props: Props) {
 
       <div className={styles.contentContainer}>
         <div className={styles.goBottom} onClick={e => scrollToBottom()}> go bottom</div>
-
           <div className={styles.messagewrap}>
           {messages.map((e,idx) => {
             return <Message message={e} key={idx} />
@@ -388,14 +390,11 @@ function App(props: Props) {
   }
 
 export default App;
-/*
+/**
+ * 
+ * 
+ *             <Modal>
+              <WellCome />
+            </Modal>
 
-
-      <div className={styles.messagewrap}>
-      </div>
-
-
-
-
-
-*/
+ */

@@ -65,11 +65,7 @@ function App({DropEvent} : Props) {
 
     const reverseScroll = (e: React.WheelEvent) => {
         if (e.deltaX === 0) {
-            if (e.deltaY > 0) {
-                image.scrollBy({left: 30})
-            } else {
-                image.scrollBy({left: -30})
-            }
+            image.scrollBy({left: e.deltaY})
         }
     }
 

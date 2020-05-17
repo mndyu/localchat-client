@@ -1,7 +1,6 @@
 .container {
   height: 100%;
   min-width: 60px;
-  width: 5vw;
   text-align: center;
   overflow-y: auto;
   overflow-x: hidden;

@@ -37,11 +37,14 @@
 }
 
 .fbar {
-  position: relative;
-  border: solid;
-  border-right-width: 1rem;
-  border-right-color: rgb(160, 160, 160);
-  border-radius: 15px;
-  right: 81px;
-  bottom: 10px;
+  width: 5px;
+  height: 45px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  position: fixed;
+
+  left: -3px;
+  z-index: 0;
+  background-color: rgb(161, 161, 161);
 }

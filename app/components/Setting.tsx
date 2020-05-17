@@ -31,12 +31,6 @@ function App() {
       <div onClick={e=> openModal(<Userinfo />)} tabIndex={0}>
         user name change modal
       </div>
-      <div onClick={e=> openModal(<GroupCreate />)} tabIndex={0}>
-        group create btn
-      </div>
-      <div onClick={e=> openModal(<GroupIntive />)} tabIndex={0}>
-        group invite modal
-      </div>
       <div onClick={e=> openModal(<Groupdismiss />)} tabIndex={0}>
         group dismiss btn
       </div>

@@ -3,5 +3,6 @@
   "GROUP": "/group/:gid",
   "COUNTER": "/counter",
   "SETTING": "/setting",
-  "LOGS": "/logs"
+  "LOGS": "/logs",
+  "ADDGROUP": "/groupselect"
 }

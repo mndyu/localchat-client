@@ -1,8 +1,8 @@
 .container {
-  margin: 0;
-  display: block;
-
   color: black;
+  height: 100%;
+
+  overflow: hidden;
 }
 
 .modalcont {

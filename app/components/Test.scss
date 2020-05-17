@@ -20,10 +20,6 @@
   background-color: rgb(38, 41, 44);
 }
 
-.usercontainer:hover {
-  animation: selecton 200ms ease 1 normal;
-}
-
 .contentContainer {
   height: 100%;
   display: block;
@@ -42,10 +38,6 @@
   overflow-y: auto;
 }
 
-.textwrap:hover {
-  animation: selectbody 200ms ease 1 normal;
-}
-
 .messagewrap {
   background-color: rgb(48, 54, 59);
   color: rgb(209, 209, 209);
@@ -58,11 +50,8 @@
   margin-left: auto;
 }
 
-.messagewrap:hover {
-  animation: selectbody 200ms ease 1 normal;
-}
-
 .goBottom {
+  z-index: 1;
   text-align: center;
   cursor: pointer;
   background-color: rgb(110, 110, 110);
