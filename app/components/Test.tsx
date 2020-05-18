@@ -257,6 +257,7 @@ function App(props: Props) {
   const [inputext, setInputext] = useState("")
   const messagesEndRef = useRef(null)
 
+
   let target: React.ElementRef<"div">;
   // forced re rendering
   // https://stackoverflow.com/questions/53215285/how-can-i-force-component-to-re-render-with-hooks-in-react
@@ -338,9 +339,15 @@ function App(props: Props) {
 
   const scrollToBottom = () => {
     //messagesEndRef.current.scrollIntoView({ behavior: "smooth" }) 
+    //console.log(target.scrollHeight)
+    //target.scrollBy({top: target.scrollHeight})
+    target.scrollTo({
+      top: target.scrollHeight,
+      behavior: "smooth"
+    })
   }
 
-//  useEffect(scrollToBottom, [messages]);
+  useEffect(scrollToBottom, [messages]);
 
   useEffect(() => {
     // delay mount func
@@ -353,12 +360,12 @@ function App(props: Props) {
   return (
     <div className={styles.rootcontainer}>
       <div className={styles.header}>
-        <Header />
+        <Header history={props.history} />
       </div>
 
       <div className={styles.body}>
         <div className={styles.d1}>
-          <Side />
+          <Side history={props.history} />
         </div>
         <div className={styles.d2}>
           <div className={styles.container}>
@@ -375,7 +382,7 @@ function App(props: Props) {
 
             <div className={styles.contentContainer}>
               <div className={styles.goBottom} onClick={e => scrollToBottom()}> go bottom</div>
-                <div className={styles.messagewrap}>
+                <div ref={el => target = el} className={styles.messagewrap}>
                   {messages.map((e,idx) => {
                     return <Message message={e} key={idx} />
                   })}
