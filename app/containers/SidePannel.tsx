@@ -6,12 +6,46 @@ import { History } from 'history';
 import Fetch from '../actions/Fetch'
 
 import Group from '../components/Group'
+import AddG from '../components/AddGroup'
 
 type Props = {
   history: History;
 };
 
 const tempGroup = [
+  {
+    name: "test"
+  },
+  {
+    name: "test"
+  },
+  {
+    name: "test"
+  },
+  {
+    name: "test"
+  },
+  {
+    name: "test"
+  },
+  {
+    name: "test"
+  },
+  {
+    name: "test"
+  },
+  {
+    name: "test"
+  },
+  {
+    name: "test"
+  },
+  {
+    name: "test"
+  },
+  {
+    name: "test"
+  },
   {
     name: "test"
   },
@@ -33,6 +67,12 @@ function App({history}: Props) {
     forceUpdate()
   }
 
+  const addGroup = () => {
+    history.push("/groupselect")
+    forceUpdate()
+  }
+
+
   const getGroup = () => {
     Fetch('/groups')
     .then(result => {
@@ -53,6 +93,7 @@ function App({history}: Props) {
               <Group id={idx} focus={focus} current={currnet}/>
             </div>
         })}
+        <AddG focus={addGroup}/>
         <div className={styles.dump}></div>
       </div>
     );

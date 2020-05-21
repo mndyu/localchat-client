@@ -12,6 +12,12 @@ import Search from './UserSearch'
 import noti from '../actions/noti'
 import Fetch from '../actions/Fetch'
 
+import Header from './Header'
+import Side from '../containers/SidePannel'
+
+import Modal from './Modal'
+import WellCome from './WellCome'
+
 type Props = {
   getUser: Function;
   getMessages: Function;
@@ -277,16 +283,6 @@ function App(props: Props) {
 
   }
 
-  const searchUser = (username : any) => {
-
-
-    //var removedItem = fruits.splice(pos, 1);
-    //sentuser.push(dump)
-    //setsent(sentuser)
-    //forceUpdate()  
-
-  }
-
   const sendMessage = (message: string) => {
 
     noti()
@@ -341,10 +337,10 @@ function App(props: Props) {
   },[props.match.params.gid]);
 
   const scrollToBottom = () => {
-    messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+    //messagesEndRef.current.scrollIntoView({ behavior: "smooth" }) 
   }
 
-  useEffect(scrollToBottom, [messages]);
+//  useEffect(scrollToBottom, [messages]);
 
   useEffect(() => {
     // delay mount func
@@ -355,32 +351,43 @@ function App(props: Props) {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.userList}>
-      <Search userList={userList} />
-          <div className={styles.usercontainer} >
-            {userList.map((e,idx) => {
-              return <User name={e.name}  addUser={addSentUser} key={idx} />
-            })}
-          </div>
-          <div className={styles.dump}></div>
-
+    <div className={styles.rootcontainer}>
+      <div className={styles.header}>
+        <Header />
       </div>
 
-      <div className={styles.contentContainer}>
-        <div className={styles.goBottom} onClick={e => scrollToBottom()}> go bottom</div>
-
-          <div className={styles.messagewrap}>
-          {messages.map((e,idx) => {
-            return <Message message={e} key={idx} />
-          })}
-          <div ref={messagesEndRef} className={styles.dump}></div>
-          </div>
-
-
-        <div className={styles.textwrap}>
-          <In selectedUser={sentuser} resetUser={resetUser} setText={sendMessage}/>
+      <div className={styles.body}>
+        <div className={styles.d1}>
+          <Side />
         </div>
+        <div className={styles.d2}>
+          <div className={styles.container}>
+            <div className={styles.userList}>
+              <div>
+                <Search userList={userList} />
+              </div>
+              <div className={styles.usercont}>
+                {userList.map((e,idx) => {
+                  return <User name={e.name}  addUser={addSentUser} key={idx} />
+                })}
+              </div>
+            </div>
+
+            <div className={styles.contentContainer}>
+              <div className={styles.goBottom} onClick={e => scrollToBottom()}> go bottom</div>
+                <div className={styles.messagewrap}>
+                  {messages.map((e,idx) => {
+                    return <Message message={e} key={idx} />
+                  })}
+                </div>
+                <div ref={messagesEndRef}></div>
+              <div className={styles.textwrap}>
+                <In selectedUser={sentuser} resetUser={resetUser} setText={sendMessage}/>
+              </div>
+            </div>
+          </div>     
+
+      </div>
 
       </div>
     </div>
@@ -388,14 +395,11 @@ function App(props: Props) {
   }
 
 export default App;
-/*
+/**
+ * 
+ * 
+ *             <Modal>
+              <WellCome />
+            </Modal>
 
-
-      <div className={styles.messagewrap}>
-      </div>
-
-
-
-
-
-*/
+ */

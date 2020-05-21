@@ -299,7 +299,7 @@ function App() {
   return (
     <div className={styles.container}>
       <div className={styles.logDisplay}>
-        <div className={styles.inputForm}>
+      <div className={styles.inputForm}>
           <div>
             <label>Name</label>
             <input value={name} onChange={onChangeInputName}/>
@@ -329,10 +329,20 @@ function App() {
         </div>
       </div>
       <div className={styles.messageDisplay}>
-        {message !== null && (<Message message={message} key={1} />)}
+      {message !== null && (<Message message={message} key={1} />)}
       </div>
     </div>
   );
 }
 
 export default App;
+
+/**
+
+
+
+
+
+
+
+ */

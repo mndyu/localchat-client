@@ -8,6 +8,9 @@ import Logs from './components/Log'
 import Setting from './components/Setting'
 
 import Test from './components/Test'
+import TT from './components/Test2'
+import Select from './components/AddGroupSelect'
+
 
 export default function Routes() {
   return (
@@ -17,6 +20,7 @@ export default function Routes() {
         <Route exact path={routes.GROUP} component={Test} />
         <Route exact path={routes.LOGS} component={Logs} />
         <Route exact path={routes.SETTING} component={Setting} />
+        <Route exact path={routes.AddGROUP} component={Select} />
       </Switch>
     </App>
   );

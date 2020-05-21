@@ -19,16 +19,10 @@ type Props = {
 const Root = ({ store, history }: Props) => (
 
   <Provider store={store}>
-    <Header history={history} />
     <div className={styles.container}>
-      <div className={styles.d1}>
-        <Side history={history} />      
-      </div>
-      <div className={styles.d2}>
       <ConnectedRouter history={history}>
         <Routes />
       </ConnectedRouter>      
-      </div>
     </div>
   </Provider>
 );
@@ -37,7 +31,9 @@ export default hot(Root);
 /**
  * 
  *         
+    <Header history={history} />
 
 
+        <Side history={history} />      
 
  */
