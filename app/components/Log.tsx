@@ -258,8 +258,42 @@ function App() {
     setDisplayLogs(messagesToLogs(filteredMessages));
   }
 
+  /*const fs = require("fs");
+
+  const existsFile = (filename, callback) => {
+    fs.access(filename, "r", function (err, fd) {
+        callback(!err || err.code !== "ENOENT");
+    });
+  }*/
+
+
   const onClickLog = (evt: any, message: any) => {
     setMessage(message);
+
+    /*const config: object = {serverip: '127.0.0.1'};
+    const configString = JSON.stringify(config);
+
+    existsFile(process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"] + '/hoge.json', function (result) {
+        if (result) {
+            console.log("ファイルが存在する");
+            fs.readFile(process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"] + '/hoge.json', { encoding:"utf-8"}, (err, data)=>{
+              if(err) {
+                console.log(err)
+                alert(err);
+              } else {
+                console.log(JSON.parse(data));
+              }
+            });
+        } else {
+            console.log("ファイルが存在しない");
+            fs.writeFile(process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"] + '/hoge.json', configString, (error) => {
+              if (error != null) {
+                  alert("save error.");
+                  return;
+              }
+            });
+        }
+    });*/
   }
 
   return (
