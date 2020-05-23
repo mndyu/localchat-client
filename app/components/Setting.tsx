@@ -3,11 +3,16 @@ import styles from './Setting.css'
 import Modal from './Modal'
 
 import Userinfo from './Userinfo'
-import GroupCreate from './GroupCraeteForm'
-import GroupIntive from './GroupInviteForm'
 import Groupdismiss from './GroupDismissForm'
 
-function App() {
+type Props = {
+  history: History;
+};
+
+function App(props: Props) {
+
+  console.log(props)
+
   const [open, setOpen] = useState(false)
   const [context, setContext] = useState(<></>)
 

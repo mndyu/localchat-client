@@ -3,7 +3,7 @@ import styled from './Header.css'
 import { History } from 'history';
 import PATH from '../constants/routes.json'
 
-import {AiOutlineHome,AiOutlineSetting,AiOutlineBook} from 'react-icons/ai'
+import {AiOutlineHome,AiOutlineBook} from 'react-icons/ai'
 
 type Props = {
   history: History;
@@ -22,9 +22,6 @@ function App({ history }: Props) {
         </div>
         <div className={styled.btn} onClick={e => history.push(PATH.LOGS)} title="logs">
           <AiOutlineBook />
-        </div>
-        <div className={styled.btn} onClick={e => goSetting()} title="setting">
-          <AiOutlineSetting />
         </div>
       </div>
     );

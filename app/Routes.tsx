@@ -8,7 +8,6 @@ import Logs from './components/Log'
 import Setting from './components/Setting'
 
 import Test from './components/Test'
-import TT from './components/Test2'
 import Select from './components/AddGroupSelect'
 
 

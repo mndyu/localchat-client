@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import styles from './Log.css';
 import Message from './MessageCard';
 
-function App() {
+import Header from './Header'
+
+type Props = {
+  history: History;
+};
+
+function App(props: Props) {
   const [name, setName] = useState('');
   const [text, setText] = useState('');
   const [date, setDate] = useState('');
@@ -297,39 +303,44 @@ function App() {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.logDisplay}>
-      <div className={styles.inputForm}>
-          <div>
-            <label>Name</label>
-            <input value={name} onChange={onChangeInputName}/>
-          </div>
-          <div>
-            <label>Text</label>
-            <input value={text} onChange={onChangeInputText}/>
-          </div>
-          <div>
-            <label>Date</label>
-            <input type="Date" value={date} onChange={onChangeInputDate}/>
-          </div>
-        </div>
-        <div className={styles.logs}>
-          {displayLogs.map((log: any, index: number) => {
-            return <details key={index}>
-            <summary>{log[0]}</summary>
-            {(() => {
-              const items = [];
-              for (let i = 0; i < log[1].length; i++) {
-                items.push(<div className={styles.log} onClick={e => onClickLog(e, log[1][i])} key={i}>{log[1][i].send_date + '  ' + log[1][i].From + '->' + log[1][i].To}</div>)
-              }
-              return items;
-            })()}
-            </details>
-          })}
-        </div>
+    <div className={styles.rootcontainer}>
+      <div>
+        <Header history={props.history}/>
       </div>
-      <div className={styles.messageDisplay}>
-      {message !== null && (<Message message={message} key={1} />)}
+      <div className={styles.container}>
+        <div className={styles.logDisplay}>
+        <div className={styles.inputForm}>
+            <div>
+              <label>Name</label>
+              <input value={name} onChange={onChangeInputName}/>
+            </div>
+            <div>
+              <label>Text</label>
+              <input value={text} onChange={onChangeInputText}/>
+            </div>
+            <div>
+              <label>Date</label>
+              <input type="Date" value={date} onChange={onChangeInputDate}/>
+            </div>
+          </div>
+          <div className={styles.logs}>
+            {displayLogs.map((log: any, index: number) => {
+              return <details key={index}>
+              <summary>{log[0]}</summary>
+              {(() => {
+                const items = [];
+                for (let i = 0; i < log[1].length; i++) {
+                  items.push(<div className={styles.log} onClick={e => onClickLog(e, log[1][i])} key={i}>{log[1][i].send_date + '  ' + log[1][i].From + '->' + log[1][i].To}</div>)
+                }
+                return items;
+              })()}
+              </details>
+            })}
+          </div>
+        </div>
+        <div className={styles.messageDisplay}>
+        {message !== null && (<Message message={message} key={1} />)}
+        </div>
       </div>
     </div>
   );
