@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from './Group.css'
 
+import Context from './GroupContext'
+
 type Props = {
   id: number
   focus: Function
@@ -19,6 +21,8 @@ function App({id, focus,current}: Props) {
     setOpen(!open)
   }
 
+  
+
   return (
       <div tabIndex={0} onFocus={e => focus(id)} className={styled.container} onContextMenu={openContext}>
         {
@@ -31,6 +35,12 @@ function App({id, focus,current}: Props) {
         <span className={styled.cap}>
           N
         </span>
+        {
+          open ?
+          <Context X={pos.X} Y={pos.Y} close={setPos} />
+          :
+          null
+        }
       </div>
     );
   }

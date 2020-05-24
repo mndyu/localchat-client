@@ -27,7 +27,8 @@ export default merge.smart(baseConfig, {
 
   output: {
     path: path.join(__dirname, '..', 'app/dist'),
-    publicPath: './dist/',
+    // svg import issue
+    publicPath: './',
     filename: 'renderer.prod.js'
   },
 
