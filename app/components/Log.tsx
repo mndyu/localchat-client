@@ -1,8 +1,15 @@
+import 'date-fns';
 import React, { useState, useEffect } from 'react';
 import styles from './Log.css';
 import Message from './MessageCard';
 
 import Header from './Header'
+import { TextField } from '@material-ui/core';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 
 type Props = {
   history: History;
@@ -11,7 +18,7 @@ type Props = {
 function App(props: Props) {
   const [name, setName] = useState('');
   const [text, setText] = useState('');
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(new Date('2014-08-18 21:11:54'));
   const [message, setMessage] = useState(null);
   const [displayLogs, setDisplayLogs] = useState([]);
 
@@ -220,11 +227,11 @@ function App(props: Props) {
     return messages.filter((message: any) => partialMatchText(message, text));
   }
 
-  const filterMessagesByDate = (messages: any, inputDate: any) => {
-    return messages.filter((message: any) => equalDate(new Date(inputDate), new Date(message.send_date)));
+  const filterMessagesByDate = (messages: any, inputDate: Date) => {
+    return messages.filter((message: any) => equalDate(inputDate, new Date(message.send_date)));
   }
 
-  const filterMessages = (messages: any, name: string, text: string, date: string) => {
+  const filterMessages = (messages: any, name: string, text: string, date: Date) => {
     var filteredMessages = messages;
     if(name !== '') {
       filteredMessages = filterMessagesByName(filteredMessages, name);
@@ -232,11 +239,10 @@ function App(props: Props) {
     if(text !== '') {
       filteredMessages = filterMessagesByText(filteredMessages, text);
     }
-    if(date !== '') {
+    if(date !== null) {
       filteredMessages = filterMessagesByDate(filteredMessages, date);
     }
 
-    console.log(filteredMessages)
     return filteredMessages;
   }
 
@@ -311,16 +317,33 @@ function App(props: Props) {
         <div className={styles.logDisplay}>
         <div className={styles.inputForm}>
             <div>
-              <label>Name</label>
-              <input value={name} onChange={onChangeInputName}/>
+              {/* <label>Name</label> */}
+              <TextField id="standard-basic" label="Name" value={name} onChange={onChangeInputName}/>
             </div>
             <div>
-              <label>Text</label>
-              <input value={text} onChange={onChangeInputText}/>
+              {/* <label>Text</label> */}
+              <TextField id="standard-basic" label="Text" value={text} onChange={onChangeInputText}/>
             </div>
             <div>
-              <label>Date</label>
-              <input type="Date" value={date} onChange={onChangeInputDate}/>
+              {/* <label>Date</label> */}
+              {/* <TextField id="date" type="Date" label="Date" value={date} onChange={onChangeInputDate}
+                InputLabelProps={{
+                shrink: true,
+              }}/> */}
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  disableToolbar
+                  variant="inline"
+                  format="MM/dd/yyyy"
+                  margin="normal"
+                  id="date-picker-inline"
+                  label="Date"
+                  value={date} onChange={onChangeInputDate}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
+                />
+              </MuiPickersUtilsProvider>
             </div>
           </div>
           <div className={styles.logs}>
@@ -339,7 +362,7 @@ function App(props: Props) {
           </div>
         </div>
         <div className={styles.messageDisplay}>
-        {message !== null && (<Message message={message} key={1} />)}
+          {message !== null && (<Message message={message} key={1} />)}
         </div>
       </div>
     </div>

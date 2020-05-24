@@ -26,8 +26,13 @@ function App(props: Props) {
     },
   ]);
 
-  const onClickDeleteMember = (evt: any) => {
-    console.log(evt.target.value);
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+
+  const onClickDeleteMember = (evt: any, index: number) => {
+    members.splice(index, 1);
+    setMembers(members);
+    forceUpdate();
   }
 
   const onClickAddMember = (evt: any) => {
@@ -42,12 +47,11 @@ function App(props: Props) {
   }
 
   return(
-    //<Modal closeModal={props.closeModal}>
     <div className={styles.groupSetting}>
       <h2>GroupSetting</h2>
       <div>
         <h4>Name</h4>
-        <input type="text"/>
+        <TextField id="standard-basic" />
       </div>
       <div>
         <h4>Member</h4>
@@ -55,7 +59,7 @@ function App(props: Props) {
         {members.map((member: any, index: number) => {
           return <ListItem key={index} button>
             <ListItemText primary={member.name} />
-            <IconButton edge="end" aria-label="delete" value={index} onClick={onClickDeleteMember}>
+            <IconButton edge="end" aria-label="delete" onClick={e => onClickDeleteMember(e, index)}>
               <i className={"fas fa-minus-circle delete"}></i>
             </IconButton>
           </ListItem>
@@ -81,7 +85,6 @@ function App(props: Props) {
         <label><input type="checkbox"/>通知をオフにする</label>
       </div>
     </div>
-    //</Modal>
   );
 }
 
