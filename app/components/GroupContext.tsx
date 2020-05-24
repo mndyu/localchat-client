@@ -61,7 +61,7 @@ function App({X,Y, close}: Props) {
             {
                 open ?
                 <Modal closeModal={closeModal}>
-                    test
+                    test 
                 </Modal>
                 :
                 null

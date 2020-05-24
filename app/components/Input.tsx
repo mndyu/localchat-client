@@ -62,7 +62,7 @@ function App({setText, selectedUser, resetUser}: Props ) {
         {
           name: "sendText",
           action: sendText,
-          className: "fa fa-star", // Look for a suitable icon
+          className: "fa fa-envelope", // Look for a suitable icon
           title: "send Text (Ctr/Cmd-Enter)",
         },
       ],
