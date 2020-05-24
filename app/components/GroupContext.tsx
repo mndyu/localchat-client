@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from './GroupContext.scss'
 
+import Modal from './Modal'
+
 type Props = {
     X: number,
     Y: number,
@@ -8,10 +10,22 @@ type Props = {
   };
   
 function App({X,Y, close}: Props) {
+    const [open, setOpen] = useState(false)
 
     const closeContext = () => {
         close(false)
     }    
+
+    const openModal = () => {
+        console.log("open context modal")
+        setOpen(true)
+    }
+
+    const closeModal = () => {
+        console.log("open context modal")
+        setOpen(false)
+    }
+
 
     return (
       <div className={styles.container} style={{
@@ -20,7 +34,7 @@ function App({X,Y, close}: Props) {
       }}
         onMouseLeave={closeContext}
       >
-            <div>
+            <div onClick={openModal}>
                 Dismiss Group
             </div>
             <div>
@@ -44,6 +58,14 @@ function App({X,Y, close}: Props) {
             <div>
                 Dismiss Group
             </div>
+            {
+                open ?
+                <Modal closeModal={closeModal}>
+                    test
+                </Modal>
+                :
+                null
+            }
       </div>
     );
   }

@@ -8,7 +8,6 @@
 }
 
 .container:hover {
-  opacity: 0.9;
   cursor: pointer;
   background-color: rgb(168, 168, 168);
 }
@@ -28,7 +27,7 @@
 }
 
 .cap:hover {
-  background-color: rgb(255, 195, 31);
+  background-color: rgb(131, 126, 113);
 }
 
 .container:focus {
