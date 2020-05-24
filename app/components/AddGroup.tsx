@@ -10,7 +10,7 @@ function App({focus} : Props) {
 
     return (
         <div className={styles.container} title={"add Group"} onClick={e => focus()} >
-            + 
+            <i className="fas fa-plus"></i>
         </div>
     );
   }

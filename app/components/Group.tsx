@@ -24,13 +24,8 @@ function App({id, focus,current}: Props) {
   
 
   return (
+    <div className={current == id ? styled.root: ""} >
       <div tabIndex={0} onFocus={e => focus(id)} className={styled.container} onContextMenu={openContext}>
-        {
-          current == id ? 
-          <div className={styled.fbar}></div>
-          :
-          null
-        }
         my gorup
         <span className={styled.cap}>
           N
@@ -42,7 +37,20 @@ function App({id, focus,current}: Props) {
           null
         }
       </div>
+    </div>
     );
   }
   
 export default App;
+
+
+/**
+ * 
+ *         {
+          current == id ? 
+          <div className={styled.fbar}></div>
+          :
+          null
+        }
+
+ */

@@ -1,3 +1,7 @@
+.root {
+  border-left: solid 1.3px;
+}
+
 .container {
   background-color: rgb(115, 116, 115);
   margin: 5px 5px;
@@ -5,6 +9,8 @@
   border-radius: 25px;
   transition: all 100ms 0s ease;
   transition-timing-function: ease-in;
+
+  line-height: 1.1rem;
 }
 
 .container:hover {
@@ -16,8 +22,8 @@
   font-size: 8px;
   position: relative;
   color: white;
-  right: 8px;
-  bottom: 34px;
+  right: 12px;
+  bottom: 25px;
   border-radius: 25px;
   background-color: #e24444;
 
@@ -37,11 +43,11 @@
 
 .fbar {
   width: 5px;
-  height: 45px;
+  height: 40px;
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
   border-radius: 25px;
-  position: fixed;
+  position: relative;
 
   left: -3px;
   z-index: 0;
