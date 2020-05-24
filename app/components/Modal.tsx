@@ -14,10 +14,11 @@ function App(props: Props) {
     const { children } = props;
 
     return (
-        <div>
-            <Modal open={props.open}  onClose={e => props.closeModal()} >
+        <div className={styles.modal} >
+            <div className={styles.modalcontent}>
+                <span onClick={e => props.closeModal()}  className={styles.close}>&times;</span>
                 <>{children}</>
-            </Modal>
+            </div>
         </div>
     );
   }
@@ -26,12 +27,6 @@ export default App;
 
 /**
  * 
-        <div className={styles.modal} >
-            <div className={styles.modalcontent}>
-                <span onClick={e => props.closeModal()}  className={styles.close}>&times;</span>
-                <>{children}</>
-            </div>
-        </div>
 
 
 

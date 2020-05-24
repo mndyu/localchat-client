@@ -27,7 +27,8 @@ type Props = {
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
-      width: '70%'
+      width: '70%',
+      color: '#000000'
     },
   }),
 );
