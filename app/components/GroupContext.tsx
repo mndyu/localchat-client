@@ -2,19 +2,20 @@ import React, { useState, useEffect } from 'react';
 import styles from './GroupContext.scss'
 
 import Modal from './Modal'
+import GroupSetting from './GroupSetting'
 
 type Props = {
     X: number,
     Y: number,
     close: any,
   };
-  
+
 function App({X,Y, close}: Props) {
     const [open, setOpen] = useState(false)
 
     const closeContext = () => {
         close(false)
-    }    
+    }
 
     const openModal = () => {
         console.log("open context modal")
@@ -61,7 +62,7 @@ function App({X,Y, close}: Props) {
             {
                 open ?
                 <Modal closeModal={closeModal}>
-                    test
+                    <GroupSetting groupId="123"/>
                 </Modal>
                 :
                 null
@@ -69,5 +70,5 @@ function App({X,Y, close}: Props) {
       </div>
     );
   }
-  
+
 export default App;
