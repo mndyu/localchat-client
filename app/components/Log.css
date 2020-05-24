@@ -7,7 +7,7 @@
 .container {
   height: 100%;
   margin: 0;
-  background-color: rgb(38, 41, 44);
+  /* background-color: rgb(38, 41, 44); */
 }
 
 .container .logDisplay {
