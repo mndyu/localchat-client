@@ -28,12 +28,11 @@ type Props = {
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
       width: '70%',
+      overflowY: 'auto',
       color: '#000000'
     },
   }),
 );
-
-
 
 function App({X,Y, close}: Props) {
     const classes = useStyles();
