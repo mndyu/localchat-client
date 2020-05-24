@@ -94,7 +94,6 @@ function App({history}: Props) {
             </div>
         })}
         <AddG focus={addGroup}/>
-        <div className={styles.dump}></div>
       </div>
     );
   }
