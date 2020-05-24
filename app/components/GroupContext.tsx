@@ -15,7 +15,7 @@ type Props = {
     close: any,
   };
 
-  const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     modal: {
       display: 'flex',
@@ -34,33 +34,31 @@ type Props = {
     },
   }),
 );
-
+ 
 function App({X,Y, close}: Props) {
     const classes = useStyles();
     const [open, setOpen] = useState(false)
-
+ 
     const closeContext = () => {
         close(false)
     }
-
+ 
     const openModal = () => {
         console.log("open context modal")
         setOpen(true)
     }
-
+ 
     const closeModal = () => {
         console.log("open context modal")
         setOpen(false)
     }
 
-
     return (
-      <div className={styles.container} style={{
+        <div className={styles.container} style={{
           top: Y,
-          left: X
-      }}
+          left: X}}
         onMouseLeave={closeContext}
-      >
+        >
             <div onClick={openModal}>
                 Dismiss Group
             </div>

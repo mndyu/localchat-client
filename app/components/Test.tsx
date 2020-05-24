@@ -17,6 +17,8 @@ import Side from '../containers/SidePannel'
 
 import Modal from './Modal'
 import WellCome from './WellCome'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
 
 
 
@@ -251,7 +253,17 @@ const tempBody = [
   }
 ]
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    icon: {
+    },
+  }),
+);
+
+
 function App(props: Props) {
+  const classes = useStyles();
+
   const [sentuser, setsent] = useState([])
   const [search, setSearch] = useState("")
   const [userList, setuserList] = useState(tempUser)
@@ -383,7 +395,12 @@ function App(props: Props) {
             </div>
 
             <div className={styles.contentContainer}>
-              <div className={styles.goBottom} onClick={e => scrollToBottom()}> go bottom</div>
+              <div className={styles.goBottom} onClick={e => scrollToBottom()}>
+                <Fab className={classes.icon}  aria-label="add">
+                <i className="fas fa-arrow-down"></i>
+                </Fab>
+              </div>
+              
                 <div ref={el => target = el} className={styles.messagewrap}>
                   {messages.map((e,idx) => {
                     return <Message message={e} key={idx} />

@@ -88,15 +88,11 @@
 }
 
 .goBottom {
-  z-index: 1;
   text-align: center;
   cursor: pointer;
-  background-color: rgb(110, 110, 110);
-  width: 20%;
-  border-radius: 25px;
   position: fixed;
-  left: 25rem;
-  bottom: 12.5rem;
+  bottom: 15rem;
+  right: 4rem;
 }
 
 .dump {

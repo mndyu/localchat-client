@@ -3,9 +3,12 @@ import styles from './Input.scss'
 import User from './SelectedUser'
 //https://github.com/sparksuite/simplemde-markdown-editor
 import  SimpleMDE from 'simplemde'
-import Modal from './Modal'
 import Images from './ImageImport'
 
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 
 type Props = {
   setText: Function;
@@ -13,7 +16,28 @@ type Props = {
   resetUser: Function;
 };
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    modal: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    paper: {
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+      width: '70%',
+      height: '60%',
+      overflowY: 'auto',
+      color: '#000000'
+    },
+  }),
+);
+
 function App({setText, selectedUser, resetUser}: Props ) {
+  const classes = useStyles();
   const [message, setMessage] = useState("")
   const [open, setOpen] = useState(false)
   const [evt, setEvt] = useState()
@@ -95,14 +119,20 @@ function App({setText, selectedUser, resetUser}: Props ) {
 
   return (
       <div onDrop={onDrop} className={styles.container}>
-        {
-          open ? 
-          <Modal closeModal={closeModal}>
-            <Images DropEvent={evt}/>
-          </Modal> 
-          :
-          null
-        }
+        <Modal open={open}  onClose={closeModal}
+            className={classes.modal}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+                timeout: 500,
+            }}
+        >
+            <Fade in={open}>
+                <div className={classes.paper}>
+                  <Images DropEvent={evt}/>
+                </div>
+            </Fade>
+        </Modal>
           <div className={styles.selected}>
             <div>
               send user:
