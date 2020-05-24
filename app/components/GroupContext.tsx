@@ -28,6 +28,7 @@ type Props = {
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
       width: '70%',
+      height: '60%',
       overflowY: 'auto',
       color: '#000000'
     },

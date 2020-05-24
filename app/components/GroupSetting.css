@@ -1,0 +1,22 @@
+.groupSetting {
+  margin: 10px;
+  text-align: left;
+  /*color: white;
+  background-color: rgb(38, 41, 44);*/
+}
+
+.groupSetting > div {
+  margin-left: 20px;
+}
+
+.groupSetting h4 {
+  margin-bottom: 5px;
+}
+
+.memberList {
+  border: solid 1px Black;
+  list-style-type: none;
+}
+.memberList > li {
+  border: solid 1px Black;
+}
