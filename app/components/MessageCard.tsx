@@ -99,7 +99,7 @@ function App({message}: Props) {
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
-              <Typography paragraph>
+              <Typography paragraph component={'span'} variant={'body2'}>
                 {message.body}
                 <div dangerouslySetInnerHTML={{__html: markdown.toHTML( "Hello *World*!" )}}/>
               </Typography>
