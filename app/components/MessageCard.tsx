@@ -15,6 +15,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
       transform: 'rotate(180deg)',
     },
     avatar: {
-      backgroundColor: red[500],
+      backgroundColor: '#67A730',
     },
   }),
 );
@@ -59,51 +60,53 @@ function App({message}: Props) {
 
     return (
       <div className={styles.container}>
-        <Card className={classes.root}>
-        <CardHeader
-          avatar={
-            <Avatar aria-label="recipe" className={classes.avatar}>
-              {message.name[0]}
-            </Avatar>
-          }
-          action={
-            <IconButton aria-label="settings">
-              <i className="fas fa-ellipsis-v"></i>
-            </IconButton>
-          }
-          title={message.name}
-          subheader={message.date ? message.date : getTime()}
-        />
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            message info
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-          </IconButton>
-          <IconButton aria-label="share">
-          </IconButton>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded,
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <i className="fas fa-chevron-down"></i>
-          </IconButton>
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <Box boxShadow={3}>
+          <Card className={classes.root} >
+          <CardHeader
+            avatar={
+              <Avatar aria-label="recipe" className={classes.avatar}>
+                {message.name[0]}
+              </Avatar>
+            }
+            action={
+              <IconButton aria-label="settings">
+                <i className="fas fa-ellipsis-v"></i>
+              </IconButton>
+            }
+            title={message.name}
+            subheader={message.date ? message.date : getTime()}
+          />
           <CardContent>
-            <Typography paragraph>
-              {message.body}
-              <div dangerouslySetInnerHTML={{__html: markdown.toHTML( "Hello *World*!" )}}/>
+            <Typography variant="body2" color="textSecondary" component="p">
+              message info
             </Typography>
           </CardContent>
-        </Collapse>
-      </Card>
+          <CardActions disableSpacing>
+            <IconButton aria-label="add to favorites">
+            </IconButton>
+            <IconButton aria-label="share">
+            </IconButton>
+            <IconButton
+              className={clsx(classes.expand, {
+                [classes.expandOpen]: expanded,
+              })}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+            >
+              <i className="fas fa-chevron-down"></i>
+            </IconButton>
+          </CardActions>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <CardContent>
+              <Typography paragraph>
+                {message.body}
+                <div dangerouslySetInnerHTML={{__html: markdown.toHTML( "Hello *World*!" )}}/>
+              </Typography>
+            </CardContent>
+          </Collapse>
+        </Card>
+        </Box>
       </div>
 
     );

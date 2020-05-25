@@ -4,7 +4,6 @@
   text-align: center;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: rgb(48, 54, 59);
 }
 
 .container:hover {

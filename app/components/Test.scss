@@ -49,7 +49,6 @@
   width: 18vw;
   overflow: hidden;
   text-align: center;
-  background-color: rgb(38, 41, 44);
 }
 
 .usercont {
@@ -63,13 +62,11 @@
   width: calc(100% - 18vw);
   overflow: hidden;
 
-  background-color: rgb(73, 77, 80);
   color: rgb(209, 209, 209);
 }
 
 .textwrap {
   max-height: 42vh;
-  background-color: rgb(48, 54, 59);
   width: inherit;
   height: 200px;
   position: fixed;
@@ -78,7 +75,6 @@
 }
 
 .messagewrap {
-  background-color: rgb(48, 54, 59);
   color: rgb(209, 209, 209);
   overflow-y: auto;
 
