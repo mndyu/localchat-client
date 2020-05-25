@@ -1,5 +1,5 @@
 .container {
-  background-color: rgb(250, 249, 241);
+  background-color: var(--main-header-color);
 }
 
 .container div {
@@ -10,4 +10,5 @@
 
 .btn {
   cursor: pointer;
+  color: var(--main-button-font-color);
 }

@@ -1,3 +1,14 @@
+:root {
+  --main-bg-color: white;
+  --sub-bg-color: rgb(136, 145, 173);
+  --group-bg-color: rgb(100, 106, 124);
+  /*rgb(136, 145, 173)*/
+  --main-font-color: black;
+  --main-button-color: #e0e0e0;
+  --main-button-font-color: white;
+  --main-header-color: rgb(51, 58, 78);
+}
+
 .rootcontainer {
   width: 100%;
   height: 100%;
@@ -49,6 +60,7 @@
   width: 18vw;
   overflow: hidden;
   text-align: center;
+  background-color: var(--sub-bg-color);
 }
 
 .usercont {
@@ -62,11 +74,13 @@
   width: calc(100% - 18vw);
   overflow: hidden;
 
-  color: rgb(209, 209, 209);
+  background-color: var(--main-bg-color);
+  color: var(--main-font-color);
 }
 
 .textwrap {
   max-height: 42vh;
+  background-color: var(--main-bg-color);
   width: inherit;
   height: 200px;
   position: fixed;
@@ -75,7 +89,8 @@
 }
 
 .messagewrap {
-  color: rgb(209, 209, 209);
+  background-color: var(--main-bg-color);
+  color: var(--main-font-color);
   overflow-y: auto;
 
   height: calc(100% - 224px);

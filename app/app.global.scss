@@ -18,13 +18,14 @@ html {
 body {
   position: relative;
   height: 100%;
+  background-color: var(--main-bg-color);
   font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro',
     'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック',
     'MS PGothic', sans-serif;
   overflow-y: hidden;
   overflow-x: hidden;
   margin: 0;
-  background-color: #ffffff;
+  color: var(--main-font-color);
 }
 
 details {
@@ -46,8 +47,8 @@ details {
 }
 
 .editor-statusbar {
-  color: rgb(209, 209, 209);
-  background-color: rgb(48, 54, 59);
+  color: var(--main-font-color);
+  background-color: var(--main-bg-color);
 }
 
 .editor-toolbar {
