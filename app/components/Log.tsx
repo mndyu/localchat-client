@@ -1,4 +1,5 @@
 import 'date-fns';
+import jaLocale from "date-fns/locale/ja";
 import React, { useState, useEffect } from 'react';
 import styles from './Log.css';
 import Message from './MessageCard';
@@ -18,7 +19,7 @@ type Props = {
 function App(props: Props) {
   const [name, setName] = useState('');
   const [text, setText] = useState('');
-  const [date, setDate] = useState(new Date('2014-08-18 21:11:54'));
+  const [date, setDate] = useState(null);
   const [message, setMessage] = useState(null);
   const [displayLogs, setDisplayLogs] = useState([]);
 
@@ -262,8 +263,8 @@ function App(props: Props) {
     setDisplayLogs(messagesToLogs(filteredMessages));
   }
 
-  const onChangeInputDate = (evt: any) => {
-    const inputDate = evt.target.value;
+  const onChangeInputDate = (inputDate: any) => {
+    //const inputDate = evt.target.value;
     setDate(inputDate);
     var filteredMessages: any = filterMessages(messages, name, text, inputDate);
 
@@ -330,11 +331,11 @@ function App(props: Props) {
                 InputLabelProps={{
                 shrink: true,
               }}/> */}
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <MuiPickersUtilsProvider utils={DateFnsUtils} locale={jaLocale}>
                 <KeyboardDatePicker
                   disableToolbar
                   variant="inline"
-                  format="MM/dd/yyyy"
+                  format="yyyy/MM/dd"
                   margin="normal"
                   id="date-picker-inline"
                   label="Date"

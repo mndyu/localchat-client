@@ -3,7 +3,8 @@
 }
 
 .container {
-  background-color: rgb(115, 116, 115);
+  background-color: var(--group-bg-color);
+  color: var(--main-button-font-color);
   margin: 5px 5px;
   padding: 3px;
   border-radius: 25px;
@@ -15,7 +16,7 @@
 
 .container:hover {
   cursor: pointer;
-  background-color: rgb(168, 168, 168);
+  background-color: var(--main-bg-color);
 }
 
 .cap {
@@ -51,5 +52,5 @@
 
   left: -3px;
   z-index: 0;
-  background-color: rgb(161, 161, 161);
+  background-color: var(--main-bg-color);
 }
