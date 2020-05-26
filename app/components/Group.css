@@ -1,13 +1,11 @@
 .root {
   border-left: solid 1.3px;
+  border-left-color: white;
 }
 
 .container {
-  background-color: var(--group-bg-color);
-  color: var(--main-button-font-color);
   margin: 5px 5px;
   padding: 3px;
-  border-radius: 25px;
   transition: all 100ms 0s ease;
   transition-timing-function: ease-in;
 
@@ -16,7 +14,6 @@
 
 .container:hover {
   cursor: pointer;
-  background-color: var(--main-bg-color);
 }
 
 .cap {
@@ -38,7 +35,6 @@
 }
 
 .container:focus {
-  background-color: rgb(87, 87, 90);
   outline: none;
 }
 

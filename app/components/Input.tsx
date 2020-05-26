@@ -9,7 +9,9 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import Chip from '@material-ui/core/Chip';
 
+// https://material-ui.com/components/chips/
 type Props = {
   setText: Function;
   selectedUser: any;
@@ -46,7 +48,7 @@ function App({setText, selectedUser, resetUser}: Props ) {
   let simple: SimpleMDE;
   let mes = "";
 
-  const resetSentUser = (username: String) => {
+  const resetSentUser = (username: any) => {
     resetUser(username)
   }
 
@@ -134,13 +136,11 @@ function App({setText, selectedUser, resetUser}: Props ) {
             </Fade>
         </Modal>
           <div className={styles.selected}>
-            <div>
-              send user:
-              <br/>
-            </div>
             <div className={styles.sconatiner}>
               {selectedUser.map((e: any,idx: number) => {
-                return <User removeUser={resetSentUser} username={e} key={idx} />
+                return <div key={idx} >
+                    <Chip size="small" label={e.name} onDelete={evt => resetSentUser(e)} color="primary" />
+                  </div>              
               })}
             </div>
           </div>
