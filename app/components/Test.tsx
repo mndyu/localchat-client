@@ -195,6 +195,10 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     icon: {
     },
+    user: {
+      height: '2.3rem',
+      textAlign: 'center',
+    }
   }),
 );
 
@@ -325,7 +329,7 @@ function App(props: Props) {
               <div className={styles.usercont}>
                 <List component="nav" aria-label="main mailbox folders">
                 {userList.map((e,idx) => {
-                  return <ListItem button key={idx}>  
+                  return <ListItem className={classes.user} button key={idx}>  
                     <User name={e.name}  addUser={addSentUser} key={idx} />
                   </ListItem>
                 })}
