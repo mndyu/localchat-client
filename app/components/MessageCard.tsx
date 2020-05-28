@@ -65,7 +65,7 @@ function App({message}: Props) {
           <CardHeader
             avatar={
               <Avatar aria-label="recipe" className={classes.avatar}>
-                {message.name[0]}
+                {message.From[0]}
               </Avatar>
             }
             action={
@@ -73,8 +73,8 @@ function App({message}: Props) {
                 <i className="fas fa-ellipsis-v"></i>
               </IconButton>
             }
-            title={message.name}
-            subheader={message.date ? message.date : getTime()}
+            title={message.From}
+            subheader={message.date ? message.send_date : getTime()}
           />
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
@@ -100,7 +100,7 @@ function App({message}: Props) {
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
               <Typography paragraph component={'span'} variant={'body2'}>
-                {message.body}
+                {message.text}
                 <div dangerouslySetInnerHTML={{__html: markdown.toHTML( "Hello *World*!" )}}/>
               </Typography>
             </CardContent>

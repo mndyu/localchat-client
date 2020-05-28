@@ -123,133 +123,70 @@ const tempUser = [
 
 const tempBody = [
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
+    From: "test"
   },
   {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
+    From: "test"
   }
 ]
 
@@ -384,7 +321,7 @@ function App(props: Props) {
         <div className={styles.d2}>
           <div className={styles.container}>
             <div className={styles.userList}>
-              <div>
+              <div>　
                 <Search userList={userList} />
               </div>
               <div className={styles.usercont}>

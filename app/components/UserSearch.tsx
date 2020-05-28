@@ -3,6 +3,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import styles from './UserSearch.scss'
 import Input from '@material-ui/core/Input';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 // https://material-ui.com/components/autocomplete/
 
@@ -23,35 +24,40 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function App({userList}: Props) {
     const classes = useStyles();
-    const [message, setMessage] = useState("test")
+    const [value, setValue] = React.useState<string | null>();
+    const [opt, setOpt] = useState([])
 
-    const onChange = (evt: any) => {
-        setMessage(evt.target.value)
+    const converList = (l: any) => {
+
+        let temp = []
+
+        for (var i in  l) {
+            temp.push(l[i].name)
+        }
+
+        setOpt(temp)
     }
 
-    const searchStart = (e: any) => {
-        //init user list
-        console.log("search start")
-    }
-
-    const searchEnd = (e: any) => [
-        // GC
-        console.log("search end")
-    ]
+    useEffect(() => {
+        converList(userList)
+    }, [userList]);
+    
 
     return (
-        <div className={styles.container} onMouseEnter={searchStart} onMouseLeave={searchEnd}  >
+        <div className={styles.container} >
             <div>
-                <span>
-                    user search
-                </span>
+                <Autocomplete
+                    value={value}
+                    onChange={(event: any, newValue: string | null) => {
+                        setValue(newValue);
+                    }}
+                    options={opt}
+                    style={{ width: 300 }}
+                    renderInput={(params :any) => <TextField {...params} label="user" variant="outlined" />}
+                />
+
+
             </div>
-            <input list="search" type="text" maxLength={16} value={message} onChange={onChange} autoComplete="on"/>
-            <datalist id="search">
-                {userList.map((user: any, index: number) => {
-                    return <option value={user.name} key={index}/>
-                })}
-            </datalist>
         </div>
         );
   }
