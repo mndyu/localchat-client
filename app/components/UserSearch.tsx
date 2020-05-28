@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import styles from './UserSearch.scss'
-import Input from '@material-ui/core/Input';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { ChangeEvent } from 'react';
 
 // https://material-ui.com/components/autocomplete/
 
@@ -24,40 +24,20 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function App({userList}: Props) {
     const classes = useStyles();
-    const [value, setValue] = React.useState<string | null>();
-    const [opt, setOpt] = useState([])
 
-    const converList = (l: any) => {
-
-        let temp = []
-
-        for (var i in  l) {
-            temp.push(l[i].name)
-        }
-
-        setOpt(temp)
+    const test = (e: ChangeEvent, value: any) => {
+        console.log(value)
     }
-
-    useEffect(() => {
-        converList(userList)
-    }, [userList]);
     
-
     return (
-        <div className={styles.container} >
-            <div>
-                <Autocomplete
-                    value={value}
-                    onChange={(event: any, newValue: string | null) => {
-                        setValue(newValue);
-                    }}
-                    options={opt}
-                    style={{ width: 300 }}
-                    renderInput={(params :any) => <TextField {...params} label="user" variant="outlined" />}
-                />
-
-
-            </div>
+        <div className={styles.box}>
+            <Autocomplete
+                autoHighlight
+                getOptionLabel={(option) => option.name}
+                options={userList}
+                onChange={test}                
+                renderInput={(params :any) => <TextField {...params} label="Search" variant="outlined" />}
+            />
         </div>
         );
   }

@@ -93,7 +93,7 @@ function App({history}: Props) {
               <Group id={idx} focus={focus} current={currnet}/>
             </div>
         })}
-        <AddG focus={addGroup}/>
+          <AddG focus={addGroup}/>
       </div>
     );
   }

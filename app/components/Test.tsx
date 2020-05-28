@@ -15,9 +15,10 @@ import Fetch from '../actions/Fetch'
 import Header from './Header'
 import Side from '../containers/SidePannel'
 
-import Modal from './Modal'
 import WellCome from './WellCome'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 import Fab from '@material-ui/core/Fab';
 
 // https://material-ui.com/components/lists/#simple-list
@@ -197,19 +198,16 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
 function App(props: Props) {
   const classes = useStyles();
 
-  const [sentuser, setsent] = useState([])
+  const [sentuser, setsent] = useState<Array<String> | null>([])
   const [search, setSearch] = useState("")
   const [userList, setuserList] = useState(tempUser)
   const [messages, setMessages] = useState([])
   const [inputext, setInputext] = useState("")
-  const messagesEndRef = useRef(null)
 
-
-  let target: React.ElementRef<"div">;
+  let target: HTMLDivElement | null;
   // forced re rendering
   // https://stackoverflow.com/questions/53215285/how-can-i-force-component-to-re-render-with-hooks-in-react
   const [, updateState] = React.useState();
@@ -325,9 +323,13 @@ function App(props: Props) {
                 <Search userList={userList} />
               </div>
               <div className={styles.usercont}>
+                <List component="nav" aria-label="main mailbox folders">
                 {userList.map((e,idx) => {
-                  return <User name={e.name}  addUser={addSentUser} key={idx} />
+                  return <ListItem button key={idx}>  
+                    <User name={e.name}  addUser={addSentUser} key={idx} />
+                  </ListItem>
                 })}
+                </List>
               </div>
             </div>
 
@@ -343,7 +345,7 @@ function App(props: Props) {
                     return <Message message={e} key={idx} />
                   })}
                 </div>
-                <div ref={messagesEndRef}></div>
+                <div></div>
               <div className={styles.textwrap}>
                 <In selectedUser={sentuser} resetUser={resetUser} setText={sendMessage}/>
               </div>

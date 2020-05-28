@@ -1,18 +1,9 @@
 .container {
-  background-color: rgb(115, 116, 115);
-  border-radius: 25px;
   transition: all 100ms 0s ease;
   transition-timing-function: ease-in;
-
-  margin-left: 5px;
-  margin-right: 5px;
-
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 .container:hover {
   opacity: 0.9;
   cursor: pointer;
-  background-color: rgb(168, 168, 168);
 }
