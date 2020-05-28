@@ -6,12 +6,16 @@
 
 .container {
   height: 100%;
-  margin: 0;
   /* background-color: rgb(38, 41, 44); */
 }
 
 .container .logDisplay {
   display: inline-block;
+  padding: 10px;
+  padding-right: 0px;
+  background-color: var(--sub-bg-color);
+  overflow: hidden;
+  width: 25%;
 }
 
 .container .messageDisplay {
@@ -51,24 +55,22 @@
   float: left;
 }
 
-.logs {
-  padding-bottom: 40px;
-}
-
-.log:hover {
+.details:hover {
   color: #61dafb;
   cursor: pointer;
 }
 
-details {
-  background-color: rgb(87, 88, 92);
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  padding: 0.5em 0.5em 0;
-  cursor: default;
+.logs {
+  overflow-y: auto;
+  height: calc(100% - 90px);
 }
 
-summary {
+.details {
+  background-color: var(--sub-bg-color) !important;
+}
+
+.summary {
   outline: none;
-  color: white;
+  background-color: var(--sub-bg-color) !important;
+  cursor: default;
 }

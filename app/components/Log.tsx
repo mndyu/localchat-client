@@ -2,28 +2,42 @@ import 'date-fns';
 import jaLocale from "date-fns/locale/ja";
 import React, { useState, useEffect } from 'react';
 import styles from './Log.css';
-import Message from './MessageCard';
+import MessageCard from './MessageCard';
+import { Message } from '../types/message';
 
 import Header from './Header'
-import { TextField } from '@material-ui/core';
+import { TextField, ExpansionPanelDetails } from '@material-ui/core';
+
+import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+
+import { withStyles } from '@material-ui/core/styles';
+import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
 import DateFnsUtils from '@date-io/date-fns';
+
+import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 type Props = {
   history: History;
 };
 
 function App(props: Props) {
+  interface Log {
+    date?: string;
+    message?: Message;
+  }
+
   const [name, setName] = useState('');
   const [text, setText] = useState('');
-  const [date, setDate] = useState(null);
+  const [date, setDate] = useState<Date|null>(null);
   const [message, setMessage] = useState(null);
-  const [displayLogs, setDisplayLogs] = useState([]);
+  const [displayLogs, setDisplayLogs] = useState<Log[]>([]);
 
-  var messages = [
+  var messages: Message[] = [
     {
       id: 1,
       From: 'Tom',
@@ -166,6 +180,45 @@ function App(props: Props) {
     },
   ]
 
+  const ExpansionPanel = withStyles({
+    root: {
+      boxShadow: 'none',
+      '&:not(:last-child)': {
+        borderBottom: 0,
+      },
+      '&:before': {
+        display: 'none',
+      },
+      '&$expanded': {
+        margin: 'auto',
+      },
+    },
+    expanded: {},
+  })(MuiExpansionPanel);
+
+  const ExpansionPanelSummary = withStyles({
+    root: {
+      //borderBottom: '1px solid rgba(0, 0, 0, .125)',
+      marginBottom: -10,
+      minHeight: 20,
+      '&$expanded': {
+        minHeight: 20,
+      },
+    },
+    content: {
+      '&$expanded': {
+        margin: '12px 0',
+      },
+    },
+    expanded: {},
+  })(MuiExpansionPanelSummary);
+
+  const ExpansionPanelDetails = withStyles((theme) => ({
+    root: {
+      padding: theme.spacing(1, 2)
+    },
+  }))(MuiExpansionPanelDetails);
+
   const groupBy = <K, V>(
     array: readonly V[],
     getKey: (cur: V, idx: number, src: readonly V[]) => K
@@ -193,7 +246,7 @@ function App(props: Props) {
     return compare;
   }
 
-  const messagesToLogs = (messages: any) => {
+  const messagesToLogs = (messages: Message[]):Log[] => {
     messages = messages.sort(compareDate);
     return groupBy(messages, message => message.send_date);
   }
@@ -220,19 +273,19 @@ function App(props: Props) {
     return date1.getTime() == date2.getTime();
   }
 
-  const filterMessagesByName = (messages: any, name: string) => {
+  const filterMessagesByName = (messages: Message[], name: string) => {
     return messages.filter((message: any) => partialMatchName(message, name));
   }
 
-  const filterMessagesByText = (messages: any, text: string) => {
+  const filterMessagesByText = (messages: Message[], text: string) => {
     return messages.filter((message: any) => partialMatchText(message, text));
   }
 
-  const filterMessagesByDate = (messages: any, inputDate: Date) => {
+  const filterMessagesByDate = (messages: Message[], inputDate: Date|null) => {
     return messages.filter((message: any) => equalDate(inputDate, new Date(message.send_date)));
   }
 
-  const filterMessages = (messages: any, name: string, text: string, date: Date) => {
+  const filterMessages = (messages: Message[], name: string, text: string, date: Date|null) => {
     var filteredMessages = messages;
     if(name !== '') {
       filteredMessages = filterMessagesByName(filteredMessages, name);
@@ -349,21 +402,27 @@ function App(props: Props) {
           </div>
           <div className={styles.logs}>
             {displayLogs.map((log: any, index: number) => {
-              return <details key={index}>
-              <summary>{log[0]}</summary>
-              {(() => {
+              return <ExpansionPanel square key={index}>
+                <ExpansionPanelSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  className={styles.summary}
+                  aria-controls="panel1d-content" id="panel1d-header"
+                >
+                  {log[0]}
+                </ExpansionPanelSummary>
+                {(() => {
                 const items = [];
                 for (let i = 0; i < log[1].length; i++) {
-                  items.push(<div className={styles.log} onClick={e => onClickLog(e, log[1][i])} key={i}>{log[1][i].send_date + '  ' + log[1][i].From + '->' + log[1][i].To}</div>)
+                  items.push(<ExpansionPanelDetails className={styles.details} onClick={e => onClickLog(e, log[1][i])} key={i}>{log[1][i].send_date + '  ' + log[1][i].From + '->' + log[1][i].To}</ExpansionPanelDetails>)
                 }
                 return items;
-              })()}
-              </details>
+                })()}
+              </ExpansionPanel>
             })}
           </div>
         </div>
         <div className={styles.messageDisplay}>
-          {message !== null && (<Message message={message} key={1} />)}
+          {message !== null && (<MessageCard message={message} />)}
         </div>
       </div>
     </div>

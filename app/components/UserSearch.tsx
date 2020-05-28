@@ -28,15 +28,19 @@ function App({userList}: Props) {
     const test = (e: ChangeEvent, value: any) => {
         console.log(value)
     }
-    
+
     return (
         <div className={styles.box}>
             <Autocomplete
                 autoHighlight
                 getOptionLabel={(option) => option.name}
                 options={userList}
-                onChange={test}                
-                renderInput={(params :any) => <TextField {...params} label="Search" variant="outlined" />}
+                onChange={test}
+                renderInput={(params) => (
+                  <TextField {...params} InputLabelProps={{
+                    shrink: true,
+                  }}variant="outlined" label="Search" size="small"/>
+                )}
             />
         </div>
         );
