@@ -16,6 +16,9 @@ import Header from './Header'
 import Side from '../containers/SidePannel'
 
 import WellCome from './WellCome'
+
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -191,6 +194,11 @@ const tempBody = [
   }
 ]
 
+function Alert(props: AlertProps) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     icon: {
@@ -210,6 +218,7 @@ function App(props: Props) {
   const [userList, setuserList] = useState(tempUser)
   const [messages, setMessages] = useState([])
   const [inputext, setInputext] = useState("")
+  const [info, setInfo] = useState(false)
 
   let target: HTMLDivElement | null;
   // forced re rendering
@@ -279,6 +288,15 @@ function App(props: Props) {
 
   }
 
+  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setInfo(false);
+  };
+
+
   //https://qiita.com/k-penguin-sato/items/9373d87c57da3b74a9e6
   useEffect(() => {
     // init page use data
@@ -304,6 +322,31 @@ function App(props: Props) {
 
   useEffect(() => {
     // delay mount func
+
+    async function checkServer() {
+      try {
+        let response = await Fetch('/ping')
+        console.log(response['time'])
+      }
+      catch (e) {
+        setInfo(true)
+        console.log("error")
+      }
+    }
+    checkServer()
+    /*
+    Fetch('/users').then(result => console.log(result))
+    Fetch('/users','post',{
+      id: "testid",
+      name: "testname",
+      ip_address: "127.0.0.1",
+      pc_name: "testpc"
+    }).then(result => console.log(result))
+
+    Fetch('/groups').then(result => console.log(result))
+    Fetch('/profile').then(result => console.log(result))
+    */
+
     const timer = setTimeout(() => {
       scrollToBottom()
     }, 500);
@@ -312,6 +355,14 @@ function App(props: Props) {
 
   return (
     <div className={styles.rootcontainer}>
+
+      <Snackbar open={info} autoHideDuration={3000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="warning">
+          retry connect
+        </Alert>
+      </Snackbar>
+
+
       <div className={styles.header}>
         <Header history={props.history} />
       </div>

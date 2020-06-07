@@ -1,7 +1,7 @@
 const BASE_URL =
   process.env.NODE_ENV === 'production'
     ? "prd"
-    : "http://localhost:1324/api/v1";
+    : "http://133.167.108.162:18000/api/v1";
 
 export default function Fetch (url: string, method='GET',body=null){
     return fetch(BASE_URL + url,{
