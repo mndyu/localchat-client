@@ -7,7 +7,8 @@ import CounterPage from './containers/CounterPage';
 import Logs from './components/Log'
 import Setting from './components/Setting'
 
-import Test from './components/Test'
+//import Test from './components/Test'
+import Test from './containers/TestPage'
 import Select from './components/AddGroupSelect'
 
 

@@ -6,19 +6,19 @@ import { Typography } from '@material-ui/core';
 
 type Props = {
   addUser: Function;
-  name: string
+  el: any
 };
 
 // onlive icon add
-function App({addUser, name}: Props) {
+function App({addUser, el}: Props) {
   
     return (
-      <div className={styled.container} onClick={e => addUser(name)}>
+      <div className={styled.container} onClick={e => addUser(el)}>
         <div className={styled.live}>
         </div>
         <Badge badgeContent={2} color="error">
           <Typography variant="button" display="block" gutterBottom>
-            user name
+            {el.name}
           </Typography>
         </Badge>
       </div>

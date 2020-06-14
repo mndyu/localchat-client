@@ -10,53 +10,12 @@ import AddG from '../components/AddGroup'
 
 type Props = {
   history: History;
+  groups: any;
 };
 
-const tempGroup = [
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  },
-  {
-    name: "test"
-  }
-]
-
-function App({history}: Props) {
+function App({history, groups}: Props) {
   const [currnet, setCurrent] = useState(0)
-  const [enterdGroup, setGroup] = useState(tempGroup)
+  const [enterdGroup, setGroup] = useState([])
   
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -72,19 +31,10 @@ function App({history}: Props) {
     forceUpdate()
   }
 
-
-  const getGroup = () => {
-    Fetch('/groups')
-    .then(result => {
-      console.log("groups", result)
-      setGroup(result)})
-    .catch(e => console.log(e))
-  }
-
   useEffect(() => {
-    // Your code here
-    //getGroup()
-  },[]);
+    // init page use data
+    setGroup(groups)
+  },[groups]);
 
   return (
       <div className={styles.container} data-tid="container">

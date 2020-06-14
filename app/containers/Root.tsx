@@ -17,7 +17,6 @@ type Props = {
 };
 
 const Root = ({ store, history }: Props) => (
-
   <Provider store={store}>
     <div className={styles.container}>
       <ConnectedRouter history={history}>
@@ -28,12 +27,3 @@ const Root = ({ store, history }: Props) => (
 );
 
 export default hot(Root);
-/**
- * 
- *         
-    <Header history={history} />
-
-
-        <Side history={history} />      
-
- */

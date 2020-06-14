@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './MessageCard.scss'
 import {markdown} from 'markdown';
 
@@ -7,15 +6,17 @@ import { makeStyles, Theme, createStyles, styled } from '@material-ui/core/style
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
+
 import Box from '@material-ui/core/Box';
+import MenuIcon from '@material-ui/icons/Menu';
+import Drawer from '@material-ui/core/Drawer';
+import Thread from './MessageThread'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -38,6 +39,9 @@ const useStyles = makeStyles((theme: Theme) =>
     avatar: {
       backgroundColor: '#67A730',
     },
+    drawer: {
+      width: '50%'
+    },
   }),
 );
 
@@ -49,6 +53,11 @@ type Props = {
 function App({message}: Props) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(message.flag);
+  const [open, setOpen] = useState(false)
+
+  const closeDrawer = () => {
+    setOpen(false)
+  }
 
   const getTime = () => {
     return new Date().toLocaleString()
@@ -58,8 +67,15 @@ function App({message}: Props) {
     setExpanded(!expanded);
   };
 
+  const openThread = () => {
+    setOpen(true)
+  }
+
     return (
       <div className={styles.container}>
+          <Drawer classes={{paper: classes.drawer,}} anchor={'right'} open={open} onClose={closeDrawer}>
+            <Thread id={message.id}/>
+          </Drawer>        
         <Box boxShadow={3}>
           <Card className={classes.root} >
           <CardHeader
@@ -69,8 +85,8 @@ function App({message}: Props) {
               </Avatar>
             }
             action={
-              <IconButton aria-label="settings">
-                <i className="fas fa-ellipsis-v"></i>
+              <IconButton aria-label="settings" onClick={openThread} >
+                <MenuIcon />
               </IconButton>
             }
             title={message.From}
@@ -100,8 +116,7 @@ function App({message}: Props) {
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
               <Typography paragraph component={'span'} variant={'body2'}>
-                {message.text}
-                <div dangerouslySetInnerHTML={{__html: markdown.toHTML( "Hello *World*!" )}}/>
+                <div dangerouslySetInnerHTML={{__html: markdown.toHTML(message.text ? message.text : "Hello *World*!" )}}/>
               </Typography>
             </CardContent>
           </Collapse>
@@ -113,51 +128,3 @@ function App({message}: Props) {
   }
   
 export default App;
-
-/*
-
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <div>
-            {message.name}
-          </div>
-          <div className={styles.time}>
-            {message.date ? message.date : getTime()}            
-          </div>          
-          <div className={styles.info}onClick={(e) => setInfo(!info)}>
-            info
-          </div>
-        </div>
-        {
-          info ? 
-          <div className={styles.subheader}>
-            <div>
-              open flag:false
-            </div>
-            <div>
-              opentime:{getTime()}
-            </div>
-            <div>
-               sendtime:{getTime()}
-            </div>
-          </div>
-          :
-          null
-        }
-        {opened ? 
-        <div className={styles.body}>
-          {message.body}
-          <div dangerouslySetInnerHTML={{__html: markdown.toHTML( "Hello *World*!" )}}/>
-        </div>        
-        :
-        <div className={styles.unopen} onClick={e => openMessage()}>
-          Read Message Click Here
-
-        </div>        
-        }
-      </div>
-
-
-
-
-*/

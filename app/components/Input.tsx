@@ -40,7 +40,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function App({setText, selectedUser, resetUser}: Props ) {
   const classes = useStyles();
-  const [message, setMessage] = useState("")
   const [open, setOpen] = useState(false)
   const [evt, setEvt] = useState()
 
